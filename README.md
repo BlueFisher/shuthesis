@@ -21,7 +21,7 @@ ShuThesis 为 <b>S</b>hang<b>h</b>ai <b>U</b>niversity <b>Thesis</b> LaTeX Templ
 # 升级
 
 ## 手动更新
-从 [GitHub](https://github.com/ahhylau/shuthesis)下载放入论文目录, 执行命令 (Windows 用户在文件夹空白处按`Shift+鼠标右键`, 点击“在此处打开命令行窗口”):
+从 [GitHub](https://github.com/ahhylau/shuthesis) 下载放入论文目录, 执行命令 (Windows 用户在文件夹空白处按`Shift+鼠标右键`, 点击“在此处打开命令行窗口”):
 
     latex shuthesis.ins
 
