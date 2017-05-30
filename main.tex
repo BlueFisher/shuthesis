@@ -1,0 +1,63 @@
+\documentclass[type=doctor]{shuthesis}
+% 选项:
+%  type=[master|doctor],            % 必选
+%  secret,                          % 可选 (如果论文需要保密, 这一项需要打开)
+%  pifootnote,                      % 可选（建议打开）
+%  openany|openright,               % 可选 (章首页是右开还是任意开, 默认是右开)
+\usepackage{shuthesis}
+\graphicspath{{figures/}}
+
+\begin{document}
+\frontmatter
+\shusetup{
+  %%%%%%%% 1. 配置里面不要出现空行. 2. 不需要的配置信息可以删除. %%%%%%%%%%%
+  secretlevel={公开},             % 秘级
+  % 中文信息
+  ctitle={上海大学研究生(硕博)学位论文 \LaTeX\ 模板使用示例文档 v\version},
+  cdisciplines={理学},
+  cdepartment={理学院},
+  cmajor={运筹学与控制论},
+  cauthor={ahhylau},
+  csupervisor={},
+  id={15820019}, 
+  catalognumber={O157}, 
+  cdate={2017 年 5 月},
+  coverdate={\zhdigits{2017}年\zhnumber{5}月},
+  % 英文信息
+  etitle={An Introduction to \LaTeX{} Thesis Template of Shanghai University v\version},
+  edisciplines={Science},
+  edepartment={Department of Mathematics},
+  emajor={Operational Research and Control Theory},
+  eauthor={ahhylau},
+  esupervisor={},
+  edate={May, 2017}
+}
+
+\input{data/abstract}
+\makefirstpage                         % 生成带有学校 logo 的封面
+\makecover
+
+\tableofcontents                       % 目录
+
+\input{data/denotation}                % 符号对照表
+
+% 正文部分
+\mainmatter
+\include{data/chap01}
+\include{data/chap02}
+\include{data/chap03}
+\include{data/chap04}
+\listoffigures                        % 插图索引
+\listoftables                         % 表格索引
+% 参考文献. 
+\bibliographystyle{shuthesis}
+\bibliography{reference/refs}
+
+\include{data/publications}           % 发表论文清单
+\include{data/acknowledgement}        % 致谢
+
+\backmatter
+\appendix
+\input{data/appendix}
+
+\end{document}
