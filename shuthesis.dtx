@@ -162,7 +162,8 @@
 % clean.bat & 清理编译过程中生成的缓存文件\\
 % make-doc.bat & 一键生成用户手册 shuthesis.pdf\\\midrule
 % FZLanTing.ttf & 方正兰亭中黑字体 (\XeLaTeX\ 编译使用)\\
-% FZXBsong.ttf  & 方正小标宋字体 (\XeLaTeX\ 编译使用)\\\bottomrule
+% FZXBsong.ttf  & 方正小标宋字体 (\XeLaTeX\ 编译使用)\\
+% HanYikaishu.ttf & 汉仪中楷字体 (\XeLaTeX\ 编译使用)\\\bottomrule
 % \end{longtable}
 %
 % 几点说明:
@@ -433,7 +434,7 @@
 % \subsubsection{论文标题}
 % \DescribeMacro{\ctitle}
 % \DescribeMacro{\etitle}
-% 中英文标题. 可以在标题内部使用换行 ``|\\|".
+% 中英文标题. 中文题目内部不能使用换行 ``|\\|", 英文题目可以在内部使用换行 ``|\\|".
 % \begin{latex}
 % \shusetup{
 %   ctitle={论文中文题目},
@@ -776,7 +777,7 @@
 %\PassOptionsToPackage{AutoFakeBold}{xeCJK}
 %    \end{macrocode}
 %
-% 而是使用方正小标宋和方正兰亭黑作为宋体和黑体的加粗形式, 更加美观.
+% 而是使用方正小标宋、方正兰亭黑和汉仪中楷字体作为宋体、黑体和楷书的加粗形式, 更加美观.
 % \changes{v2.0}{2017/05/05}{使用方正小标宋和方正兰亭黑字体.}
 %    \begin{macrocode}
 \RequirePackage{ifxetex}
@@ -785,6 +786,8 @@
 \newcommand{\LanTingHei}{\CJKfamily{LanTingHei}}
 \setCJKfamilyfont{XBSong}{FZXBsong.ttf}
 \newcommand{\XBSong}{\CJKfamily{XBSong}}
+\setCJKfamilyfont{HanYikai}{HanYikaishu.ttf}
+\newcommand{\HanYikai}{\CJKfamily{HanYikai}}
 \else\fi
 %    \end{macrocode}
 %
@@ -853,12 +856,7 @@
 \RequirePackage[labelformat=simple]{subcaption}
 %    \end{macrocode}
 %
-% \pkg{pdfpages} 宏包便于插入 PDF 文档.
-%    \begin{macrocode}
-\RequirePackage{pdfpages}
-\includepdfset{fitpaper=true}
-%    \end{macrocode}
-%
+% 提供更加灵活的列表定制.
 %    \begin{macrocode}
 \RequirePackage[shortlabels]{enumitem}
 \RequirePackage{environ}
@@ -896,6 +894,8 @@
 %    \begin{macrocode}
 \RequirePackage{array}
 \RequirePackage{longtable}
+\RequirePackage{makecell}
+\RequirePackage{tabu}
 %    \end{macrocode}
 %
 % 使用三线表: \cs{toprule}, \cs{midrule}, \cs{bottomrule}.
@@ -1080,12 +1080,7 @@
 % \begin{macro}{\banxiaosi}
 % \begin{macro}{\xiaosi}
 % \begin{macro}{\dawu}
-% \begin{macro}{\wuhao}
-% \begin{macro}{\xiaowu}
-% \begin{macro}{\liuhao}
-% \begin{macro}{\xiaoliu}
-% \begin{macro}{\qihao}
-% \begin{macro}{\bahao}
+% \begin{macro}{...}
 % 一组字号定义, 也可以使用 \texttt{ctex} 宏包的 \cs{zihao} 替代.
 %    \begin{macrocode}
 \shu@def@fontsize{maxsize}{57bp}
@@ -1109,11 +1104,6 @@
 \shu@def@fontsize{bahao}{5bp}
 %</cls>
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
@@ -1710,29 +1700,27 @@
 \def\shu@first@page{%
  {\noindent\ifxetex\XBSong\else\bfseries\songti\fi%
  中图分类号：{\bfseries\shu@catalognumber}\hfill 单位代号：{\bfseries 10280\hphantom{000}}\\
- 秘\hphantom{空白空}级：\expandafter\ifshu@secret\shu@secret@content\else%
+ 密\hphantom{空白空}级：\expandafter\ifshu@secret\shu@secret@content\else%
  \shu@secretlevel\fi\hfill 学\hphantom{空白}号：{\bfseries\shu@id}}
- \par\vskip5mm
+ \par\vskip1mm
  \noindent\uline{\hspace{105mm}}\par\vskip2mm
   \raisebox{1ex}[0pt][0pt]{
   \includegraphics[height=3cm,width=9.8cm]{shu.pdf}}\hskip5mm
   \includegraphics[height=3.3cm,width=2.7cm]{shulogo.pdf}\par\vskip5mm
   \hskip3mm{\maxsize\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@cdegree 学位论文}\par
- \noindent\uline{\hskip143mm}\vskip-2mm
+ \noindent\uline{\hskip143mm}\par\vskip1mm
+ {\zihao{-1}\bfseries 
+  \centerline{SHANGHAI~~UNIVERSITY}
+  \centerline{\MakeUppercase{\shu@edegree}'S~~DISSERTATION}}
  \begin{center}
-   \zihao{-1}\bfseries
-   SHANGHAI~~UNIVERSITY\\
-   \MakeUppercase{\shu@edegree}'S~~DISSERTATION
- \end{center}
- \begin{center}
-   \begin{tabular}{|p{.08\textwidth}|p{.8\textwidth}|}
-    \hline
-   \begin{center} \zihao{-2}\bfseries\kaishu 题\\ \bfseries\kaishu 目 \end{center} 
-    & \begin{center} 
-    \erhao[1.4]\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@ctitle 
-    \end{center}\\
-   \hline  
-   \end{tabular}
+   \tabulinesep=_5mm^5mm
+   \arrayrulewidth=1pt
+     \begin{tabu} to 0.9\textwidth{|X[1,c,m]|X[11,c,m]|}
+       \hline
+       \zihao{-2}\ifxetex\HanYikai\else\bfseries\kaishu\fi\makecell{题\\ 目} & 
+       \erhao[1.4]\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@ctitle\\
+       \hline  
+     \end{tabu}
  \end{center}
    \vfill
  \begin{center}
