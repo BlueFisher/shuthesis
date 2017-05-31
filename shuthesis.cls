@@ -61,6 +61,8 @@
 \newcommand{\LanTingHei}{\CJKfamily{LanTingHei}}
 \setCJKfamilyfont{XBSong}{FZXBsong.ttf}
 \newcommand{\XBSong}{\CJKfamily{XBSong}}
+\setCJKfamilyfont{HanYikai}{HanYikaishu.ttf}
+\newcommand{\HanYikai}{\CJKfamily{HanYikai}}
 \else\fi
   \ifshu@master\relax\else
     \ifshu@doctor\relax\else
@@ -81,8 +83,6 @@
 \RequirePackage{courier}
 \RequirePackage{graphicx}
 \RequirePackage[labelformat=simple]{subcaption}
-\RequirePackage{pdfpages}
-\includepdfset{fitpaper=true}
 \RequirePackage[shortlabels]{enumitem}
 \RequirePackage{environ}
 \ifshu@raggedbottom
@@ -98,6 +98,8 @@
 \RequirePackage[amsmath,thmmarks,thref,hyperref]{ntheorem}
 \RequirePackage{array}
 \RequirePackage{longtable}
+\RequirePackage{makecell}
+\RequirePackage{tabu}
 \RequirePackage{booktabs}
 \RequirePackage{ulem}
 \RequirePackage[numbers,sort&compress]{natbib}
@@ -391,29 +393,27 @@
 \def\shu@first@page{%
  {\noindent\ifxetex\XBSong\else\bfseries\songti\fi%
  中图分类号：{\bfseries\shu@catalognumber}\hfill 单位代号：{\bfseries 10280\hphantom{000}}\\
- 秘\hphantom{空白空}级：\expandafter\ifshu@secret\shu@secret@content\else%
+ 密\hphantom{空白空}级：\expandafter\ifshu@secret\shu@secret@content\else%
  \shu@secretlevel\fi\hfill 学\hphantom{空白}号：{\bfseries\shu@id}}
- \par\vskip5mm
+ \par\vskip1mm
  \noindent\uline{\hspace{105mm}}\par\vskip2mm
   \raisebox{1ex}[0pt][0pt]{
   \includegraphics[height=3cm,width=9.8cm]{shu.pdf}}\hskip5mm
   \includegraphics[height=3.3cm,width=2.7cm]{shulogo.pdf}\par\vskip5mm
   \hskip3mm{\maxsize\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@cdegree 学位论文}\par
- \noindent\uline{\hskip143mm}\vskip-2mm
+ \noindent\uline{\hskip143mm}\par\vskip1mm
+ {\zihao{-1}\bfseries
+  \centerline{SHANGHAI~~UNIVERSITY}
+  \centerline{\MakeUppercase{\shu@edegree}'S~~DISSERTATION}}
  \begin{center}
-   \zihao{-1}\bfseries
-   SHANGHAI~~UNIVERSITY\\
-   \MakeUppercase{\shu@edegree}'S~~DISSERTATION
- \end{center}
- \begin{center}
-   \begin{tabular}{|p{.08\textwidth}|p{.8\textwidth}|}
-    \hline
-   \begin{center} \zihao{-2}\bfseries\kaishu 题\\ \bfseries\kaishu 目 \end{center}
-    & \begin{center}
-    \erhao[1.4]\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@ctitle
-    \end{center}\\
-   \hline
-   \end{tabular}
+   \tabulinesep=_5mm^5mm
+   \arrayrulewidth=1pt
+     \begin{tabu} to 0.9\textwidth{|X[1,c,m]|X[11,c,m]|}
+       \hline
+       \zihao{-2}\ifxetex\HanYikai\else\bfseries\kaishu\fi\makecell{题\\ 目} &
+       \erhao[1.4]\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@ctitle\\
+       \hline
+     \end{tabu}
  \end{center}
    \vfill
  \begin{center}
