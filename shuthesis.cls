@@ -50,6 +50,7 @@
 \DeclareBoolOption{arialtitle}
 \DeclareBoolOption{raggedbottom}
 \DeclareBoolOption{pifootnote}
+\DeclareBoolOption{nocolor}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \kvsetkeys{shu}{raggedbottom,arialtitle}
 \ProcessKeyvalOptions*
@@ -95,7 +96,7 @@
   \RequirePackage{pifont}
 \fi
 \RequirePackage{CJKfntef}
-\RequirePackage[amsmath,thmmarks,thref,hyperref]{ntheorem}
+\RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 \RequirePackage{array}
 \RequirePackage{longtable}
 \RequirePackage{makecell}
@@ -121,10 +122,18 @@
   bookmarksopenlevel=2,
   breaklinks=true,
   colorlinks=true,
+  plainpages=false}
+\ifshu@nocolor
+\hypersetup{%
+  citecolor=black,
+  linkcolor=black,
+  urlcolor=black}
+\else
+\hypersetup{%
   citecolor=blue,
   linkcolor=blue,
-  urlcolor=blue,
-  plainpages=false}
+  urlcolor=blue}
+\fi
 \urlstyle{same}
 \RequirePackage{geometry}
 \geometry{
@@ -137,9 +146,14 @@
   headheight=8mm,
   headsep=7mm,
   top=30mm,
-  bottom=29mm,
-  footskip=6mm}
+  bottom=26mm,
+  footskip=7mm}
 \RequirePackage{fancyhdr}
+\def\theoremautorefname{定理}
+\def\lemmaautorefname{引理}
+\def\definitionautorefname{定义}
+\def\corollaryautorefname{推论}
+\def\propositionautorefname{命题}
 \let\shu@cleardoublepage\cleardoublepage
 \newcommand{\shu@clearemptydoublepage}{%
   \clearpage{\pagestyle{shu@empty}\shu@cleardoublepage}}
@@ -159,8 +173,8 @@
   \@mainmattertrue}
 \renewcommand\normalsize{%
   \@setfontsize\normalsize{12bp}{20bp}%
-  \abovedisplayskip=20bp \@plus 2bp \@minus 2bp
-  \abovedisplayshortskip=20bp \@plus 2bp \@minus 2bp
+  \abovedisplayskip=13bp \@plus 2bp \@minus 2bp
+  \abovedisplayshortskip=13bp \@plus 2bp \@minus 2bp
   \belowdisplayskip=\abovedisplayskip
   \belowdisplayshortskip=\abovedisplayshortskip}
 \def\shu@def@fontsize#1#2{%
@@ -227,6 +241,7 @@
 \pretocmd{\@makefntext}{\let\@makefnmark\shu@@makefnmark}{}{}
 \apptocmd{\@makefntext}{\let\@makefnmark\shu@makefnmark}{}{}
 \allowdisplaybreaks[4]
+\numberwithin{equation}{chapter}
 \setlength{\floatsep}{20bp \@plus4pt \@minus1pt}
 \setlength{\intextsep}{20bp \@plus4pt \@minus2pt}
 \setlength{\textfloatsep}{20bp \@plus4pt \@minus2pt}
@@ -284,13 +299,13 @@
     afterindent=true,
     beforeskip={16bp\@plus 1ex \@minus .2ex},
     afterskip={6bp \@plus .2ex},
-    format={\shu@title@font\heiti\xiaosi[1.5]},
+    format={\shu@title@font\heiti\sihao[1.5]},
   },
   subsubsection={
     afterindent=true,
     beforeskip={16bp\@plus 1ex \@minus .2ex},
     afterskip={6bp \@plus .2ex},
-    format={\csname shu@title@font\endcsname\heiti\xiaosi[1.6]},
+    format={\csname shu@title@font\endcsname\heiti\sihao[1.6]},
   },
   paragraph/afterindent=true,
   subparagraph/afterindent=true}
@@ -389,18 +404,23 @@
 \shu@parse@keywords{ckeywords}
 \shu@parse@keywords{ekeywords}
 \def\shusetup{\kvsetkeys{shu}}
-\renewcommand{\ULthickness}{1.5pt}
-\def\shu@first@page{%
+\def\shu@first@page{\renewcommand{\ULthickness}{1.8pt}%
  {\noindent\ifxetex\XBSong\else\bfseries\songti\fi%
  中图分类号：{\bfseries\shu@catalognumber}\hfill 单位代号：{\bfseries 10280\hphantom{000}}\\
  密\hphantom{空白空}级：\expandafter\ifshu@secret\shu@secret@content\else%
  \shu@secretlevel\fi\hfill 学\hphantom{空白}号：{\bfseries\shu@id}}
  \par\vskip1mm
  \noindent\uline{\hspace{105mm}}\par\vskip2mm
-  \raisebox{1ex}[0pt][0pt]{
-  \includegraphics[height=3cm,width=9.8cm]{shu.pdf}}\hskip5mm
-  \includegraphics[height=3.3cm,width=2.7cm]{shulogo.pdf}\par\vskip5mm
-  \hskip3mm{\maxsize\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@cdegree 学位论文}\par
+   \ifshu@nocolor
+   \raisebox{1ex}[0pt][0pt]{
+   \includegraphics[height=3cm,width=9.8cm]{shublack.pdf}}\hskip5mm
+   \includegraphics[height=3.3cm,width=2.7cm]{shulogoblack.pdf}
+   \else
+   \raisebox{1ex}[0pt][0pt]{
+   \includegraphics[height=3cm,width=9.8cm]{shu.pdf}}\hskip5mm
+   \includegraphics[height=3.3cm,width=2.7cm]{shulogo.pdf}\fi\par\vskip5mm
+   \hskip3mm{\maxsize\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@cdegree 学位论文}
+ \par\vskip-1mm
  \noindent\uline{\hskip143mm}\par\vskip1mm
  {\zihao{-1}\bfseries
   \centerline{SHANGHAI~~UNIVERSITY}
@@ -411,11 +431,13 @@
      \begin{tabu} to 0.9\textwidth{|X[1,c,m]|X[11,c,m]|}
        \hline
        \zihao{-2}\ifxetex\HanYikai\else\bfseries\kaishu\fi\makecell{题\\ 目} &
-       \erhao[1.4]\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@ctitle\\
-       \hline
+       \erhao[1.4]\bfseries\ifxetex\LanTingHei\else\heiti\fi\tabulinesep=_1.5mm^1.5mm
+          \begin{tabu}{X[c,m]}
+            \shu@ctitle
+          \end{tabu}\\\hline
      \end{tabu}
  \end{center}
-   \vfill
+   \vfill\renewcommand{\ULthickness}{1pt}
  \begin{center}
   {\heiti\xiaoer[1.9]
   \begin{tabular}{cl}
@@ -451,8 +473,8 @@
  \begin{center}
  \zihao{2}\ifxetex\XBSong\else\bfseries\songti\fi 原创性声明
  \end{center}
- \vskip1cm
- \sihao[1.7] 本人声明：所呈交的论文是本人在导师指导下进行的研究工作。
+ \par\vskip1cm\sihao[1.7]
+ 本人声明：所呈交的论文是本人在导师指导下进行的研究工作。
  除了文中特别加以标注和致谢的地方外，论文中不包含其他人已发表或撰写过
  的研究成果。参与同一工作的其他同志对本研究所做的任何贡献均已在论文中
  作了明确的说明并表示了谢意。
@@ -462,8 +484,8 @@
  \vskip2.5cm
  \begin{center}
  \zihao{2}\ifxetex\XBSong\else\bfseries\songti\fi 本论文使用授权说明
- \end{center}\par
- \vskip1.1cm
+ \end{center}
+ \par\vskip1.1cm
  本人完全了解上海大学有关保留、使用学位论文的规定。即：学校有权保留论文
  及送交论文复印件，允许论文被查阅和借阅；学校可以公布论文的全部或部分内容。\par
  ({\ifxetex\XBSong\else\bfseries\songti\fi 保密的论文在解密后应遵守此规定})
@@ -480,9 +502,9 @@
  \vskip3.5cm
  \begin{center}\xiaoer[1.8]
  \begin{tabular}{cl}
- 作\hphantom{空白}者: & \shu@cauthor\\
- 导\hphantom{空白}师: & \shu@csupervisor\\
- 学科专业:            & \shu@cmajor\\
+ 作\hphantom{空白}者: & \kaishu\shu@cauthor\\
+ 导\hphantom{空白}师: & \kaishu\shu@csupervisor\\
+ 学科专业:            & \kaishu\shu@cmajor\\
  \end{tabular}
  \end{center}
  \vskip3.5cm
@@ -561,7 +583,8 @@
   nosep,
   font=\normalfont,
   align=left,
-  leftmargin=!, % sum of the following 3 lengths
+  leftmargin=5cm,
+  rightmargin=2.5cm,
   labelindent=0pt,
   labelwidth=2.5cm,
   labelsep*=0.5cm,
