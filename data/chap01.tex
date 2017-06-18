@@ -1,3 +1,4 @@
+% !Mode:: "TeX:UTF-8"
 \chapter{模板介绍}
 \label{cha:intro}
 
@@ -20,6 +21,29 @@
 
 本模板是以清华大学学位论文模板 \textsc{ThuThesis} 为基础制作的衍生版, 在此对代码的贡
 献者表示感谢! 
+
+
+\section{目录内容}
+模板的源文件即为研究生毕业论文中使用的模板, 用户可以通过修改这些文件来编辑自己的毕业论文.
+\begin{itemize}
+\item{main.tex}: 主文件, 包含封面部分和基本设置.
+\item{data}: 包含本文正文中的所有章节.
+\begin{itemize}
+\item{abstract.tex}: 中英文摘要.
+\item{denotation.tex}: 主要符号对照表.
+\item{chap01.tex}: 第一章内容.
+\item{chap02.tex}: 第二章内容.
+\item{chap03.tex}: 第三章内容.
+\item{chap04.tex}: 第四章内容.
+\item{acknowledgement.tex}: 致谢.
+\item{publications.tex}: 作者在攻读学位期间公开发表的论文.
+\item{appendix.tex}: 附录.
+\end{itemize}
+\item{reference/refs.bib}: 存放论文所引用的全部参考文献信息.
+\item{clean.bat}: 双击此文件, 可以用来清理 main.tex 在编译之后生成的所有缓存文件, 
+如后缀名为~.aux~,~.log~,~.bak~的文件.
+\item{make-doc.bat}: 双击此文件, 一键生成用户手册 \texttt{shuthesis.pdf}.
+\end{itemize}
 
 
 \section{模板使用}
