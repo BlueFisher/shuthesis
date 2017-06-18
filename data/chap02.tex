@@ -1,3 +1,4 @@
+% !Mode:: "TeX:UTF-8"
 \chapter{表格和插图}
 \label{chap:table} 
 
@@ -25,30 +26,15 @@
 \end{table}
 
 \section{插图}
-论文里插图可使用 \texttt{graphicx} 宏包. 单张图片插入方法:
+论文里插图可使用 \texttt{graphicx} 宏包. 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[scale=0.2]{shu.pdf}
+\includegraphics[scale=0.3]{shu.pdf}
 \caption{上海大学}
 \end{figure}
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[scale=0.2]{shulogo.pdf}
+\includegraphics[scale=0.3]{shulogo.pdf}
 \caption{上海大学 logo}
-\end{figure}
-
-多张图片并排插入:
-\begin{figure}[!htbp]
-\centering
-\begin{minipage}{0.5\textwidth}
-\centering
-\includegraphics[scale=0.45]{shu.pdf}
-\caption{上海大学}
-\end{minipage}
-\begin{minipage}{0.4\textwidth}
-\centering
-\includegraphics[scale=0.12]{shulogo.pdf}
-\caption{上海大学 logo}
-\end{minipage}
 \end{figure}
