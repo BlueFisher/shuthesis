@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2017-2017 by Lele Liu <ahhylau@gmail.com>
+%% Copyright (C) 2017-2019 by Lele Liu <ahhylau@gmail.com>
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3a
@@ -430,7 +430,7 @@
    \arrayrulewidth=1pt
      \begin{tabu} to 0.9\textwidth{|X[1,c,m]|X[11,c,m]|}
        \hline
-       \zihao{-2}\ifxetex\HanYikai\else\bfseries\kaishu\fi\makecell{题\\ 目} &
+       \zihao{-2}\ifxetex\HanYikai\else\bfseries\kaishu\fi{题目} &
        \erhao[1.4]\bfseries\ifxetex\LanTingHei\else\heiti\fi\tabulinesep=_1.5mm^1.5mm
           \begin{tabu}{X[c,m]}
             \shu@ctitle
@@ -453,6 +453,9 @@
  \shu@first@page
  \restoregeometry}
 \newcommand{\shu@committee}{
+ {\noindent 姓\hphantom{空白}名：{\shu@cauthor}\hfill 学号：{\shu@id}\\
+	论文题目：\let\\=\relax{\shu@ctitle}} \par
+ \vskip1.5cm
  \noindent\centerline{\zihao{2} 上海大学} \par
  \vskip1.5cm
  \erhao[1.5] 本论文经答辩委员会全体委员审查，
@@ -463,13 +466,15 @@
  主席:\par
  \vskip1cm
  委员:\par
- \vskip6cm
+ \vskip5cm
  导\hphantom{空白}师:\par
  \vskip1cm
  答辩日期:
  \if@openright\cleardoublepage\else\clearpage\fi
  }
 \newcommand{\shu@authordeclare}{%
+ {\noindent 姓\hphantom{空白}名：{\shu@cauthor}\hfill 学号：{\shu@id}\\
+ 	论文题目：\let\\=\relax{\shu@ctitle}} \par
  \begin{center}
  \zihao{2}\ifxetex\XBSong\else\bfseries\songti\fi 原创性声明
  \end{center}
@@ -546,6 +551,7 @@
   \pdfbookmark[-1]{\shu@ctitle}{ctitle}
   \normalsize
  \shu@committee
+ \normalsize
  \shu@authordeclare
  \shu@cncover
  \shu@engcover
