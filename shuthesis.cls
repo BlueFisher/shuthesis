@@ -210,8 +210,7 @@
   \renewcommand{\footrulewidth}{0pt}}
 \fancypagestyle{shu@headings}{%
   \fancyhead{}
-  \fancyhead[CO]{\wuhao\kaishu\leftmark}
-  \fancyhead[CE]{\wuhao\kaishu 上海大学\shu@cdegree 学位论文}
+  \fancyhead[L]{\xiaowu 上海大学\shu@cdegree 学位论文}
   \fancyfoot{}
   \fancyfoot[C]{\wuhao\thepage}
   \renewcommand{\headrulewidth}{0.4pt}
