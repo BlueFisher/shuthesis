@@ -215,6 +215,10 @@
   \fancyfoot[C]{\wuhao\thepage}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0pt}}
+\fancypagestyle{shu@onlyhead}{%
+  \fancyhead{}
+  \fancyhead[L]{\xiaowu 上海大学\shu@cdegree 学位论文}
+  \renewcommand{\headrulewidth}{0.4pt}}
 \ctexset{%
   space=auto,
   autoindent=true}
@@ -452,6 +456,7 @@
  \shu@first@page
  \restoregeometry}
 \newcommand{\shu@committee}{
+ \pagestyle{shu@onlyhead}
  {\noindent 姓\hphantom{空白}名：{\shu@cauthor}\hfill 学号：{\shu@id}\\
 	论文题目：\let\\=\relax{\shu@ctitle}} \par
  \vskip1.5cm
@@ -525,13 +530,13 @@
  for the \\ Degree of \shu@edegree~in \shu@edisciplines\par
  \vskip3cm
  \begin{center}\zihao{1}{\bfseries{\shu@etitle}}\end{center}
- \vskip4cm
+ \vskip3cm
  \begin{tabular}{rl}
  Candidate:  & \shu@eauthor\\
  Supervisor: & \shu@esupervisor\\
  Major:      & \shu@emajor\\
  \end{tabular}
- \vskip4cm
+ \vskip3cm
  \bfseries\shu@edepartment\\
  Shanghai University\\
  \shu@edate
