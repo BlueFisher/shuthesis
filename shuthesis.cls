@@ -413,7 +413,7 @@
  密\hphantom{空白空}级：\expandafter\ifshu@secret\shu@secret@content\else%
  \shu@secretlevel\fi\hfill 学\hphantom{空白}号：{\bfseries\shu@id}}
  \par\vskip1mm
- \noindent\uline{\hspace{105mm}}\par\vskip2mm
+ \noindent\uline{\hskip105mm}\par\vskip2mm
    \ifshu@nocolor
    \raisebox{1ex}[0pt][0pt]{
    \includegraphics[height=3cm,width=9.8cm]{shublack.pdf}}\hskip5mm
