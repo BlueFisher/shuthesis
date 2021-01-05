@@ -623,6 +623,9 @@
 % \DescribeEnv{publications}
 % 用 \env{enumerate} 环境进行罗列发表的论文. 
 %
+% \DescribeEnv{projects}
+% 用 \env{enumerate} 环境进行罗列所做的项目. 
+%
 % \subsection{自定义}
 % \label{sec:othercmd}
 %
@@ -2161,6 +2164,21 @@
 %</cls>
 %    \end{macrocode}
 % \end{macro}
+%
+%
+% \subsection{项目}
+% \begin{environment}{projects}
+% 作者在攻读学位期间所作的项目.
+%    \begin{macrocode}
+%<*cfg>
+\newcommand{\shu@projects@title}{作者在攻读\shu@cdegree 学位期间所作的项目}
+%</cfg>
+%<*cls>
+\newenvironment{projects}[1][\shu@projects@title]{%
+ \shu@chapter*{#1}}{}
+%</cls>
+%    \end{macrocode}
+% \end{environment}
 %
 %
 % \subsection{其它}
