@@ -645,6 +645,8 @@
  \shu@chapter*{#1}}{}
 \newcommand{\researchitem}[1]{%
  \vspace{32bp}{\sihao\heiti\centerline{#1}}\par\vspace{14bp}}
+\newenvironment{projects}[1][\shu@projects@title]{%
+ \shu@chapter*{#1}}{}
 \AtEndOfClass{\input{shuthesis.cfg}}
 \AtEndOfClass{\sloppy}
 \endinput
