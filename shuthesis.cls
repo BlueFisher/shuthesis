@@ -463,7 +463,7 @@
  \noindent\centerline{\zihao{2} 上海大学} \par
  \vskip1.5cm
  \erhao[1.5] 本论文经答辩委员会全体委员审查，
- 确认符合上海大学博士学位论文质量要求。\par
+ 确认符合上海大学\shu@cdegree 学位论文质量要求。\par
  \vskip3.9cm
  \zihao{-2} 答辩委员会签名:\par
  \vskip1cm
