@@ -1188,12 +1188,15 @@
   \renewcommand{\footrulewidth}{0pt}}
 \fancypagestyle{shu@headings}{%
   \fancyhead{}
-  \fancyhead[CO]{\wuhao\kaishu\leftmark}
-  \fancyhead[CE]{\wuhao\kaishu 上海大学\shu@cdegree 学位论文}
+  \fancyhead[L]{\xiaowu 上海大学\shu@cdegree 学位论文}
   \fancyfoot{}
   \fancyfoot[C]{\wuhao\thepage}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0pt}}
+\fancypagestyle{shu@onlyhead}{%
+  \fancyhead{}
+  \fancyhead[L]{\xiaowu 上海大学\shu@cdegree 学位论文}
+  \renewcommand{\headrulewidth}{0.4pt}}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -1749,7 +1752,7 @@
  密\hphantom{空白空}级：\expandafter\ifshu@secret\shu@secret@content\else%
  \shu@secretlevel\fi\hfill 学\hphantom{空白}号：{\bfseries\shu@id}}
  \par\vskip1mm
- \noindent\uline{\hspace{105mm}}\par\vskip2mm
+ \noindent\uline{\hskip105mm}\par\vskip2mm
    \ifshu@nocolor
    \raisebox{1ex}[0pt][0pt]{
    \includegraphics[height=3cm,width=9.8cm]{shublack.pdf}}\hskip5mm
@@ -1769,7 +1772,7 @@
    \arrayrulewidth=1pt
      \begin{tabu} to 0.9\textwidth{|X[1,c,m]|X[11,c,m]|}
        \hline
-       \zihao{-2}\ifxetex\HanYikai\else\bfseries\kaishu\fi\makecell{题\\ 目} &
+       \zihao{-2}\ifxetex\HanYikai\else\bfseries\kaishu\fi{题目} &
        \erhao[1.4]\bfseries\ifxetex\LanTingHei\else\heiti\fi\tabulinesep=_1.5mm^1.5mm 
           \begin{tabu}{X[c,m]} 
             \shu@ctitle
@@ -1804,17 +1807,21 @@
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\shu@committee}{
+ \pagestyle{shu@onlyhead}
+ {\noindent 姓\hphantom{空白}名：{\shu@cauthor}\hfill 学号：{\shu@id}\\
+  论文题目：\let\\=\relax{\shu@ctitle}} \par
+ \vskip1.5cm
  \noindent\centerline{\zihao{2} 上海大学} \par
  \vskip1.5cm
  \erhao[1.5] 本论文经答辩委员会全体委员审查，
- 确认符合上海大学博士学位论文质量要求。\par 
+ 确认符合上海大学\shu@cdegree 学位论文质量要求。\par 
  \vskip3.9cm
  \zihao{-2} 答辩委员会签名:\par
  \vskip1cm
  主席:\par
  \vskip1cm
  委员:\par
- \vskip6cm
+ \vskip5cm
  导\hphantom{空白}师:\par
  \vskip1cm
  答辩日期:
@@ -1829,6 +1836,8 @@
 %    \begin{macrocode}
 %<*cls>
 \newcommand{\shu@authordeclare}{%
+ {\noindent 姓\hphantom{空白}名：{\shu@cauthor}\hfill 学号：{\shu@id}\\
+  论文题目：\let\\=\relax{\shu@ctitle}} \par
  \begin{center}
  \zihao{2}\ifxetex\XBSong\else\bfseries\songti\fi 原创性声明
  \end{center}
@@ -1896,13 +1905,13 @@
  for the \\ Degree of \shu@edegree~in \shu@edisciplines\par
  \vskip3cm
  \begin{center}\zihao{1}{\bfseries{\shu@etitle}}\end{center} 
- \vskip4cm
+ \vskip3cm
  \begin{tabular}{rl}
  Candidate:  & \shu@eauthor\\
  Supervisor: & \shu@esupervisor\\
  Major:      & \shu@emajor\\ 
  \end{tabular}
- \vskip4cm
+ \vskip3cm
  \bfseries\shu@edepartment\\
  Shanghai University\\ 
  \shu@edate
@@ -1931,6 +1940,7 @@
 % 答辩委员签名
 %    \begin{macrocode}
  \shu@committee
+ \normalsize
 %    \end{macrocode}
 %
 % 原创性声明
