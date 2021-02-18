@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2017-2019 by Lele Liu <ahhylau@gmail.com>
+%% Copyright (C) 2017-2021 by Lele Liu <ahhylau@gmail.com>
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3a
@@ -458,7 +458,7 @@
 \newcommand{\shu@committee}{
  \pagestyle{shu@onlyhead}
  {\noindent 姓\hphantom{空白}名：{\shu@cauthor}\hfill 学号：{\shu@id}\\
-	论文题目：\let\\=\relax{\shu@ctitle}} \par
+  论文题目：\let\\=\relax{\shu@ctitle}} \par
  \vskip1.5cm
  \noindent\centerline{\zihao{2} 上海大学} \par
  \vskip1.5cm
@@ -478,7 +478,7 @@
  }
 \newcommand{\shu@authordeclare}{%
  {\noindent 姓\hphantom{空白}名：{\shu@cauthor}\hfill 学号：{\shu@id}\\
- 	论文题目：\let\\=\relax{\shu@ctitle}} \par
+  论文题目：\let\\=\relax{\shu@ctitle}} \par
  \begin{center}
  \zihao{2}\ifxetex\XBSong\else\bfseries\songti\fi 原创性声明
  \end{center}
