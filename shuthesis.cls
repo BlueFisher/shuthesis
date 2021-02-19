@@ -390,22 +390,22 @@
 \newenvironment{cabstract}{\Collect@Body\shu@@cabstract}{}
 \newcommand{\shu@@eabstract}[1]{\long\gdef\shu@eabstract{#1}}
 \newenvironment{eabstract}{\Collect@Body\shu@@eabstract}{}
-\def\shu@parse@keywords#1{
+\def\shu@parse@keywords#1#2{
   \define@key{shu}{#1}{\csname #1\endcsname{##1}}
   \expandafter\gdef\csname shu@#1\endcsname{}
   \expandafter\gdef\csname #1\endcsname##1{
     \@for\reserved@a:=##1\do{
       \expandafter\ifx\csname shu@#1\endcsname\@empty\else
         \expandafter\g@addto@macro\csname shu@#1\endcsname{%
-          \ignorespaces\csname shu@keywords@separator\endcsname}
+          \ignorespaces\csname #2\endcsname}
       \fi
       \expandafter\expandafter\expandafter\g@addto@macro%
       \expandafter\csname shu@#1\expandafter\endcsname\expandafter{\reserved@a}
      }
    }
  }
-\shu@parse@keywords{ckeywords}
-\shu@parse@keywords{ekeywords}
+\shu@parse@keywords{ckeywords}{shu@ckeywords@separator}
+\shu@parse@keywords{ekeywords}{shu@ekeywords@separator}
 \def\shusetup{\kvsetkeys{shu}}
 \def\shu@first@page{\renewcommand{\ULthickness}{1.8pt}%
  {\noindent\ifxetex\XBSong\else\bfseries\songti\fi%

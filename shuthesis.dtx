@@ -1680,14 +1680,14 @@
 % 不同论文格式关键词之间的分割不太相同, 我们用 \cs{ckeywords} 和
 % \cs{ekeywords} 来收集关键词列表, 然后用本命令来生成符合要求的格式.
 %    \begin{macrocode}
-\def\shu@parse@keywords#1{
+\def\shu@parse@keywords#1#2{
   \define@key{shu}{#1}{\csname #1\endcsname{##1}}
   \expandafter\gdef\csname shu@#1\endcsname{}
   \expandafter\gdef\csname #1\endcsname##1{
     \@for\reserved@a:=##1\do{
       \expandafter\ifx\csname shu@#1\endcsname\@empty\else
         \expandafter\g@addto@macro\csname shu@#1\endcsname{%
-          \ignorespaces\csname shu@keywords@separator\endcsname}
+          \ignorespaces\csname #2\endcsname}
       \fi
       \expandafter\expandafter\expandafter\g@addto@macro%
       \expandafter\csname shu@#1\expandafter\endcsname\expandafter{\reserved@a}
@@ -1703,8 +1703,8 @@
 % 利用 \cs{shu@parse@keywords} 来定义, 内部通过 \cs{shu@ckeywords} 和
 % \cs{shu@ekeywords} 来引用.
 %    \begin{macrocode}
-\shu@parse@keywords{ckeywords}
-\shu@parse@keywords{ekeywords}
+\shu@parse@keywords{ckeywords}{shu@ckeywords@separator}
+\shu@parse@keywords{ekeywords}{shu@ekeywords@separator}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
@@ -1726,7 +1726,8 @@
 % 定义封面用到的部分文字.
 %    \begin{macrocode}
 %<*cfg>
-\def\shu@keywords@separator{;}
+\def\shu@ckeywords@separator{；}
+\def\shu@ekeywords@separator{;}
 \def\shu@secretyear{\the\year}
 \def\shu@secret@content{%
   \unskip~$\bigstar$ %
