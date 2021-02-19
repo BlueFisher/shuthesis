@@ -576,7 +576,7 @@
     \pagenumbering{Roman}
   \shu@cabstract
   \vskip12bp
-  \shu@put@keywords{\heiti\shu@ckeywords@title\enskip}{\shu@ckeywords}
+  \shu@put@keywords{\heiti\shu@ckeywords@title}{\shu@ckeywords}
   \shu@chapter*[]{\eabstractname}
   \shu@eabstract
   \vskip12bp
