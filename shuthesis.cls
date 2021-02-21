@@ -514,9 +514,11 @@
  \begin{center}\yihao[1.5]{\bfseries{\shu@ctitle}}\end{center}
  \vskip3.5cm
  \begin{center}\xiaoer[1.8]
+\begin{tabular}{cc}
 \makebox[4em][s]{作者}:     & \uline{\kaishu\makebox[12em]{\shu@cauthor}}\\
 \makebox[4em][s]{导师}:     & \uline{\kaishu\makebox[12em]{\shu@csupervisor}}\\
 \makebox[4em][s]{学科专业}: & \uline{\kaishu\makebox[12em]{\shu@cmajor}}\\
+\end{tabular}
  \end{center}
  \vskip3.5cm
  \begin{center}
