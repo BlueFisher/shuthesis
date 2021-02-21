@@ -100,7 +100,6 @@
 \RequirePackage{array}
 \RequirePackage{longtable}
 \RequirePackage{makecell}
-% \RequirePackage{tabu} %此宏包问题较多, 淘汰此宏包
 \RequirePackage{booktabs}
 \RequirePackage{ulem}
 \RequirePackage[numbers,sort&compress]{natbib}
@@ -424,35 +423,36 @@
    \includegraphics[height=3.3cm,width=2.7cm]{shulogo.pdf}\fi\par\vskip5mm
    \hskip3mm{\maxsize\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@cdegree 学位论文}
  \par\vskip-1mm
- \noindent\uline{\linewidth}\par\vskip1mm %线宽等同行宽
+ \noindent\uline{\hskip\linewidth}\par\vskip1mm
  {\zihao{-1}\bfseries
   \centerline{SHANGHAI~~UNIVERSITY}
   \centerline{\MakeUppercase{\shu@edegree}'S~~DISSERTATION}}
  \begin{center}
-\begin{tabular}{|c|c|}
-\hline
-\begin{minipage}[c][4cm][c]{2.5em}
-\centering%
-\zihao{-2}\ifxetex\HanYikai\else\bfseries\kaishu\fi\makecell{题目}
-\end{minipage}
-&
-\begin{minipage}[c][4cm][c]{11cm}
-\centering%
-\erhao[1.4]\bfseries\ifxetex\LanTingHei\else\heiti\fi
-\shu@ctitle
-\end{minipage}
-\\\hline
-\end{tabular}
+  {\setlength\arrayrulewidth{1pt}
+  \begin{tabular}{|c|c|}
+    \hline
+    \begin{minipage}[c][4cm][c]{2.5em}
+      \centering%
+      \zihao{-2}\ifxetex\HanYikai\else\bfseries\kaishu\fi\makecell{题\\ 目}
+    \end{minipage}
+    &
+    \begin{minipage}[c][4cm][c]{11cm}
+      \centering%
+      \erhao[1.4]\bfseries\ifxetex\LanTingHei\else\heiti\fi
+      \shu@ctitle
+    \end{minipage}
+    \\\hline
+  \end{tabular}}
  \end{center}
-   \vfill\renewcommand{\ULthickness}{1pt}
+ \vfill\renewcommand{\ULthickness}{1pt}
  \begin{center}
   {\heiti\xiaoer[1.9]
-\begin{tabular}{cc}
-\makebox[4em][s]{作者}          & \uline{\kaishu\makebox[12em]{\shu@cauthor}}\\
-\makebox[4em][s]{学科专业}      & \uline{\kaishu\makebox[12em]{\shu@cmajor}}\\
-\makebox[4em][s]{导师}          & \uline{\kaishu\makebox[12em]{\shu@csupervisor}}\\
-\makebox[4em][s]{完成日期}      & \uline{\kaishu\makebox[12em]{\shu@coverdate}}\\
-\end{tabular}}
+  \begin{tabular}{cc}
+    \makebox[4em][s]{作者}          & \uline{\kaishu\makebox[12em]{\shu@cauthor}}\\
+    \makebox[4em][s]{学科专业}      & \uline{\kaishu\makebox[12em]{\shu@cmajor}}\\
+    \makebox[4em][s]{导师}          & \uline{\kaishu\makebox[12em]{\shu@csupervisor}}\\
+    \makebox[4em][s]{完成日期}      & \uline{\kaishu\makebox[12em]{\shu@coverdate}}\\
+  \end{tabular}}
  \end{center}
  \if@openright\cleardoublepage\else\clearpage\fi}
 \newcommand{\makefirstpage}{
@@ -514,11 +514,11 @@
  \begin{center}\yihao[1.5]{\bfseries{\shu@ctitle}}\end{center}
  \vskip3.5cm
  \begin{center}\xiaoer[1.8]
-\begin{tabular}{cc}
-\makebox[4em][s]{作者}:     & \uline{\kaishu\makebox[12em]{\shu@cauthor}}\\
-\makebox[4em][s]{导师}:     & \uline{\kaishu\makebox[12em]{\shu@csupervisor}}\\
-\makebox[4em][s]{学科专业}: & \uline{\kaishu\makebox[12em]{\shu@cmajor}}\\
-\end{tabular}
+  \begin{tabular}{cc}
+   \makebox[4em][s]{作者}:     & \uline{\kaishu\makebox[12em]{\shu@cauthor}}\\
+   \makebox[4em][s]{导师}:     & \uline{\kaishu\makebox[12em]{\shu@csupervisor}}\\
+   \makebox[4em][s]{学科专业}: & \uline{\kaishu\makebox[12em]{\shu@cmajor}}\\
+  \end{tabular}
  \end{center}
  \vskip3.5cm
  \begin{center}
