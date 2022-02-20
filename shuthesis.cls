@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2017-2021 by Lele Liu <ahhylau@gmail.com>
+%% Copyright (C) 2017-2022 by Lele Liu <ahhylau@gmail.com>
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3a
@@ -80,7 +80,7 @@
 \RequirePackage{mathrsfs}
 \RequirePackage{bm}
 \RequirePackage{mathtools}
-\RequirePackage[defaultsups]{newtxtext}
+\RequirePackage[defaultsups,nofontspec]{newtxtext}
 \RequirePackage{courier}
 \RequirePackage{graphicx}
 \RequirePackage[labelformat=simple]{subcaption}
