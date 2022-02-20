@@ -23,12 +23,14 @@
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
 %% 
+
+
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{shuthesis}
-[2017/05/05 v2.0 Shanghai University Thesis Template]
+[2022/02/20 v2.1 Shanghai University Thesis Template]
 \hyphenation{Shu-Thesis}
 \def\shuthesis{\textsc{ShuThesis}}
-\def\version{2.0}
+\def\version{2.1}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=shu,
