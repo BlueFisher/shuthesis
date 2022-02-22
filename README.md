@@ -38,10 +38,12 @@ ShuThesis 为 <b>S</b>hang<b>h</b>ai <b>U</b>niversity <b>Thesis</b> LaTeX Templ
 
 推荐使用 Visual Studio Code + LaTeX Workshop 作为编辑器. 其他主流 LaTex 编辑器都是可行的.
 
-# 升级
+# 编译模板样式文件及使用说明
 
-从 [GitHub](https://github.com/BlueFisher/shuthesis) 下载放入论文目录, 执行命令 (Windows 用户在文件夹空白处按`Shift+鼠标右键`, 点击“在此处打开命令行窗口”):
+执行
 
-    .\make-doc.bat
+```
+.\make-doc.bat
+```
 
-即可得到 `shuthesis.cls` 和 `shuthesis.cfg` 等 ShuThesis 模板样式文件.
+即可得到 `shuthesis.cls` 和 `shuthesis.cfg` 等 ShuThesis 模板样式文件, `shuthesis.pdf` 模板使用说明.
