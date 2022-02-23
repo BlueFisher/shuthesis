@@ -606,7 +606,7 @@
   labelsep*=0.5cm,
   itemindent=0pt,
  }
-\newenvironment{acknowledgement}{\shu@chapter*[致谢]{致\quad 谢}}{}
+\newenvironment{acknowledgement}{\shu@chapter*[致谢]{致\hspace{\ccwd}谢}}{}
 \def\shu@starttoc#1{% #1: float type, prepend type name in \listof*** entry.
   \let\oldnumberline\numberline
   \def\numberline##1{\oldnumberline{\csname #1name\endcsname\hskip.4em ##1}}

@@ -23,7 +23,7 @@ ShuThesis 为 <b>S</b>hang<b>h</b>ai <b>U</b>niversity <b>Thesis</b> LaTeX Templ
 
 由于原作者 ahhylau 可能已不再维护项目仓库, 长时间没有接收 pull request, 所以从 v2.1 开始, 由 BlueFisher 维护后续版本, 提供持续的更新支持, 也感谢原作者水寿松与 ahhylau 所做的大量工作! 目前 ShuThesis 模板的代码托管在 [GitHub](https://github.com/BlueFisher/shuthesis) 上, 如有修改建议或者其他要求欢迎在 [Github Issues](https://github.com/BlueFisher/shuthesis/issues) 上提交问题, 作者会尽快回复. 由于作者能力精力有限, 非常期待有其他上大的 TeX 使用者加入到模板的开发与维护当中来, 不断完善模板.
 
-# 文档
+# 模板下载
 
 请[下载](https://github.com/BlueFisher/shuthesis)模板, 里面包括具体使用说明以及示例文档:
 
@@ -31,6 +31,10 @@ ShuThesis 为 <b>S</b>hang<b>h</b>ai <b>U</b>niversity <b>Thesis</b> LaTeX Templ
 * 模板使用说明源文件 (`shuthesis.dtx`, `shuthesis.ins`)
 * 示例源文件 (`main.tex`)
 * 预编译示例文档 (`main.pdf`)
+
+# Overleaf
+
+可至 [Overleaf](https://www.overleaf.com/latex/templates/shuthesis-thesis-template-for-shanghai-university/fqdhvtkggqzv) 创建自己的项目, 在线编辑.
 
 # 编译环境
 
