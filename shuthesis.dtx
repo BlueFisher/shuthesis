@@ -19,7 +19,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{shuthesis.dtx}[2022/02/20 2.1 Shanghai University Thesis Template]
+\ProvidesFile{shuthesis.dtx}[2022/03/13 2.1.1 Shanghai University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -151,8 +151,7 @@
 % shuthesis.ins & \textsc{DocStrip} 驱动文件 (开发用) \\
 % shuthesis.dtx & \textsc{DocStrip} 源文件 (开发用) \\\midrule
 % shuthesis.cls & 模板类文件\\
-% shuthesis.cfg & 模板配置文件\\
-% shuthesis.bst & 参考文献样式文件\\\midrule
+% shuthesis.cfg & 模板配置文件\\\midrule
 % main.tex & 示例文档主文件\\
 % reference/ & 示例文档参考文献目录\\
 % data/ & 示例文档章节具体内容\\
@@ -177,11 +176,11 @@
 % \subsection{生成模板说明文件}
 % \label{sec:generate-cls}
 % 模板解压缩后生成文件夹 \file{shuthesis-vX.Y}\footnote{\texttt{vX.Y} 为版本号.},
-% 其中包括: 模板源文件 (\file{shuthesis.ins} 和 \file{shuthesis.dtx}), 参考文献样式 
-% \file{shuthesis.bst}, 示例文档 (\file{main.tex}, \file{shuthesis.sty}\footnote{可
-% 能用到的包以及一些命令定义都放在这里, 以免 \file{shuthesis.cls} 过分臃肿.}, 
-% \file{data/}, \file{figures/} 和 \file{reference/}) 等. 在使用之前需要先生成模板说
-% 明文件 (\file{shuthesis.pdf}) 和配置文件 (\file{shuthesis.cfg}).
+% 其中包括: 模板源文件 (\file{shuthesis.ins} 和 \file{shuthesis.dtx}),
+% 示例文档 (\file{main.tex}, \file{shuthesis.sty}\footnote{可能用到的包以及一些命令定义都放在这里,
+% 以免 \file{shuthesis.cls} 过分臃肿.}, 
+% \file{data/}, \file{figures/} 和 \file{reference/}) 等.
+% 在使用之前需要先生成模板说明文件 (\file{shuthesis.pdf}) 和配置文件 (\file{shuthesis.cfg}).
 %
 % \begin{shell}
 % $ cd shuthesis-vX.Y
@@ -251,7 +250,7 @@
 %
 % \subsection{示例文件}
 % \label{sec:userguide}
-% 模板核心文件有三个: \file{shuthesis.cls}, \file{shuthesis.cfg} 和 \file{shuthesis.bst}, 
+% 模板核心文件有两个: \file{shuthesis.cls} 和 \file{shuthesis.cfg}, 
 % 但是如果没有示例文档用户会发现很难下手. 所以推荐新用户从模板自带的示例文档入手, 里面包括了
 % 论文写作用到的所有命令及其使用方法, 只需要用自己的内容进行相应替换就可以. 对于不清楚的命
 % 令可以查阅本手册. 下面的例子描述了模板中章节的组织形式, 来自于示例文档, 具体内容可以参考
@@ -655,8 +654,7 @@
 % \subsubsection{引用方式}
 %
 % \DescribeMacro{\cite}
-% \shuthesis\ 推荐使用 \BibTeX 来生成参考文献, 即将参考文献写进一个 \texttt{.bib} 文件里, 通过
-% \texttt{shuthesis.bst} 生成符合要求的参考文献. 如:
+% \shuthesis\ 推荐使用 \BibTeX 来生成参考文献, 即将参考文献写进一个 \texttt{.bib} 文件里. 如:
 % \begin{latex}
 % @book{algebra2000,
 %  title     = {代数学引论},
@@ -665,8 +663,7 @@
 %  year      = {2000},
 %  }
 % \end{latex}
-% \note[注意:]{如果不使用 \texttt{shuthesis.bst} 制作参考文献, 请删除 \file{main.tex} 
-% 中以 \cs{bibliography} 开头的两行, 以避免可能的编译错误.}
+% 本模板默认使用 GB/T 7714—2015 《信息与文献 参考文献著录规则》来生成参考文献格式.
 %
 % \subsubsection{列表环境}
 % \DescribeEnv{itemize}
@@ -695,7 +692,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{shuthesis}
 %<cfg>\ProvidesFile{shuthesis.cfg}
-%<cls|cfg>[2022/02/20 v2.1 Shanghai University Thesis Template]
+%<cls|cfg>[2022/03/13 v2.1.1 Shanghai University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -704,7 +701,7 @@
 %<*cls>
 \hyphenation{Shu-Thesis}
 \def\shuthesis{\textsc{ShuThesis}}
-\def\version{2.1}
+\def\version{2.1.1}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=shu,
@@ -923,9 +920,12 @@
 \RequirePackage{ulem}
 %    \end{macrocode}
 %
-% 参考文献引用宏包.
+% \changes{v2.1.1}{2022/03/13}{使用 GB/T 7714—2015 标准参考文献格式}
+% 参考文献引用宏包. GB/T 7714—2015 《信息与文献 参考文献著录规则》是中国的参考文献推荐标准. 
+% 国内的绝大部分学术期刊、学位论文都使用了基于该标准的格式.
 %    \begin{macrocode}
 \RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage{gbt7714}
 %    \end{macrocode}
 %
 % 删除默认模板 (\file{book.cls}) 在章之间引入的垂直间隔. 要放在 \pkg{hyperref}
