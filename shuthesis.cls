@@ -27,10 +27,10 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{shuthesis}
-[2022/02/20 v2.1 Shanghai University Thesis Template]
+[2022/03/13 v2.1.1 Shanghai University Thesis Template]
 \hyphenation{Shu-Thesis}
 \def\shuthesis{\textsc{ShuThesis}}
-\def\version{2.1}
+\def\version{2.1.1}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=shu,
@@ -105,6 +105,7 @@
 \RequirePackage{booktabs}
 \RequirePackage{ulem}
 \RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage{gbt7714}
 \patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} % lof
 \patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{} % lot
 \RequirePackage{hyperref}
