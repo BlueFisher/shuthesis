@@ -82,7 +82,26 @@
 \RequirePackage{mathrsfs}
 \RequirePackage{bm}
 \RequirePackage{mathtools}
-\RequirePackage[defaultsups,nofontspec]{newtxtext}
+\ifXeTeX
+  \PassOptionsToPackage{no-math}{fontspec}
+  \setmainfont{texgyretermes}[
+    UprightFont = *-regular ,
+    BoldFont = *-bold ,
+    ItalicFont = *-italic ,
+    BoldItalicFont = *-bolditalic ,
+    Extension = .otf ,
+    Scale = 1.0]
+
+  \setsansfont{texgyreheros}[
+    UprightFont = *-regular ,
+    BoldFont = *-bold ,
+    ItalicFont = *-italic ,
+    BoldItalicFont = *-bolditalic ,
+    Extension = .otf ,
+    Scale = 0.9]
+\else
+  \RequirePackage{newtxtext}
+\fi
 \RequirePackage{courier}
 \RequirePackage{graphicx}
 \RequirePackage[labelformat=simple]{subcaption}

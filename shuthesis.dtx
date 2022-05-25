@@ -852,7 +852,26 @@
 % \pkg{newtx} 设置 Times New Roman, Helvetica.
 %
 %    \begin{macrocode}
-\RequirePackage[defaultsups,nofontspec]{newtxtext}
+\ifXeTeX
+  \PassOptionsToPackage{no-math}{fontspec}
+  \setmainfont{texgyretermes}[
+    UprightFont = *-regular ,
+    BoldFont = *-bold ,
+    ItalicFont = *-italic ,
+    BoldItalicFont = *-bolditalic ,
+    Extension = .otf ,
+    Scale = 1.0]
+    
+  \setsansfont{texgyreheros}[
+    UprightFont = *-regular ,
+    BoldFont = *-bold ,
+    ItalicFont = *-italic ,
+    BoldItalicFont = *-bolditalic ,
+    Extension = .otf ,
+    Scale = 0.9]
+\else
+  \RequirePackage{newtxtext}
+\fi
 % \RequirePackage{newtxmath}
 %    \end{macrocode}
 %
