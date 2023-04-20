@@ -8,16 +8,16 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2017-2022 by Lele Liu <ahhylau@gmail.com>
+%% Copyright (C) 2017-2023 by Zhenyu Zhang <zhenyuzhang@shu.edu.cn>
 %% 
 %% This file may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3a
+%% conditions of the LaTeX Project Public License, either version 2.0
 %% of this license or (at your option) any later version.
 %% The latest version of this license is in:
 %% 
 %% http://www.latex-project.org/lppl.txt
 %% 
-%% and version 1.3a or later is part of all distributions of LaTeX
+%% and version 2.0 or later is part of all distributions of LaTeX
 %% version 2004/10/01 or later.
 %% 
 %% To produce the documentation run the original source files ending with `.dtx'
@@ -27,10 +27,10 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{shuthesis}
-[2022/03/13 v2.1.1 Shanghai University Thesis Template]
+[2023/04/20 v2.1.2 Shanghai University Thesis Template]
 \hyphenation{Shu-Thesis}
 \def\shuthesis{\textsc{ShuThesis}}
-\def\version{2.1.1}
+\def\version{2.1.2}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=shu,
@@ -285,6 +285,7 @@
 \captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=6bp}
 \captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=6bp}
 \captionsetup[sub]{font=shu,skip=6bp}
+\captionsetup[subfigure]{belowskip=3bp}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \renewcommand{\thesubtable}{(\alph{subtable})}
 \let\shu@LT@array\LT@array

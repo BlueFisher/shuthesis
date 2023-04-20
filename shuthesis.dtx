@@ -1,6 +1,6 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2022 by Lele Liu <zhenyuzhang@shu.edu.cn>
+% Copyright (C) 2023 by Zhenyu Zhang <zhenyuzhang@shu.edu.cn>
 %
 % This file is the thesis template of Shanghai University (shuthesis), 
 % which is originally derived from ThuThesis.
@@ -19,7 +19,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{shuthesis.dtx}[2022/03/13 2.1.1 Shanghai University Thesis Template]
+\ProvidesFile{shuthesis.dtx}[2022/03/13 2.1.2 Shanghai University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -692,7 +692,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{shuthesis}
 %<cfg>\ProvidesFile{shuthesis.cfg}
-%<cls|cfg>[2022/03/13 v2.1.1 Shanghai University Thesis Template]
+%<cls|cfg>[2023/04/20 v2.1.2 Shanghai University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -701,7 +701,7 @@
 %<*cls>
 \hyphenation{Shu-Thesis}
 \def\shuthesis{\textsc{ShuThesis}}
-\def\version{2.1.1}
+\def\version{2.1.2}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=shu,
@@ -1348,6 +1348,7 @@
 %   \item 表：caption 在上, 段前空 12 磅, 段后空 6 磅
 % \end{itemize}
 %
+% \changes{v2.1.2}{2023/04/20}{增加子图题注的间距}
 %    \begin{macrocode}
 \let\old@tabular\@tabular
 \def\shu@tabular{\dawu[1.5]\old@tabular}
@@ -1358,6 +1359,7 @@
 \captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=6bp}
 \captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=6bp}
 \captionsetup[sub]{font=shu,skip=6bp}
+\captionsetup[subfigure]{belowskip=3bp}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \renewcommand{\thesubtable}{(\alph{subtable})}
 %\renewcommand{\p@subfigure}{:}
