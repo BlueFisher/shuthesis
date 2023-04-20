@@ -42,19 +42,28 @@
 
 \section{多子图}
 多子图可使用 \texttt{subcaption} 宏包.
+
+\texttt{subcaptionbox} 命令:
+
 \begin{figure}[!htbp]
-  \setlength{\abovecaptionskip}{12bp}
   \centering
-  \begin{subfigure}{0.48\linewidth}
-    \centering
+  \subcaptionbox{上海大学}{
     \includegraphics[scale=0.3]{shu.pdf}
-    \caption{上海大学}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}{0.48\linewidth}
-    \centering
+  }
+  \subcaptionbox{上海大学logo}[.4\textwidth]{
     \includegraphics[scale=0.3]{shulogo.pdf}
-    \caption{上海大学logo}
-  \end{subfigure}
+  }
   \caption{多子图}
+\end{figure}
+
+\texttt{captionbox} 命令:
+
+\begin{figure}[!htbp]
+  \centering
+  \captionbox{上海大学logo}[.4\textwidth]{
+    \includegraphics[scale=0.3]{shulogo.pdf}
+  }
+  \captionbox{上海大学}{
+    \includegraphics[scale=0.3]{shu.pdf}
+  }
 \end{figure}
