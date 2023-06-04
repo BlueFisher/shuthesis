@@ -6,6 +6,10 @@
 
 本模板推荐使用 BIB\TeX, 样式为 GB/T 7714—2015 《信息与文献-参考文献著录规则》, 是中国的参考文献推荐标准.
 国内的绝大部分学术期刊、学位论文都使用了基于该标准的格式.
+
+根据规则第10.2.2条, 正文中引用多著者文献时, 对欧美著者只需标注第一个著者的姓, 其后附“et al.”; 对于中国著
+者应标注第一著者的姓名,其后附“等”字. 姓氏与“et al.”“等”之间留适当空隙.
+
 尽管与学校提供的参考文献格式略有不同, 但更为正式.
 
 看看这个例子: \citet{drl_2018} 总结了现状，\citet{narasimhan_language_2015} 提出了新结构, 
@@ -13,6 +17,15 @@
 drl_2018,nikiforov2014,BuFanZhou2016:Z-eigenvalues,HuQiShao2013:Cored-Hypergraphs,
 KangNikiforov2014:Extremal-Problems,LinZhou2016:Distance-Spectral,
 LuMan2016:Small-Spectral-Radius,Nikiforov2017:Symmetric-Spectrum,Qi2014:H-Plus-Eigenvalues}.
+
+如果需要使用上海大学的引用格式, 可以将模板类文件中
+\begin{verbatim}
+\RequirePackage[numbers,sort&compress,square,super]{natbib}
+\end{verbatim}
+一行改为:
+\begin{verbatim}
+\RequirePackage[numbers,sort&compress]{natbib}
+\end{verbatim}
 
 有时候一些参考文献没有纸质出处, 需要标注 URL.
 缺省情况下, URL 不会在连字符处断行, 这可能使得用连字符代替空格的网址分行很难看.
