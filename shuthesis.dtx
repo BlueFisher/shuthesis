@@ -19,7 +19,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{shuthesis.dtx}[2022/03/13 2.1.2 Shanghai University Thesis Template]
+\ProvidesFile{shuthesis.dtx}[2022/03/13 2.1.3 Shanghai University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -692,7 +692,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{shuthesis}
 %<cfg>\ProvidesFile{shuthesis.cfg}
-%<cls|cfg>[2023/04/20 v2.1.2 Shanghai University Thesis Template]
+%<cls|cfg>[2023/04/20 v2.1.3 Shanghai University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -701,7 +701,7 @@
 %<*cls>
 \hyphenation{Shu-Thesis}
 \def\shuthesis{\textsc{ShuThesis}}
-\def\version{2.1.2}
+\def\version{2.1.3}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=shu,
@@ -712,9 +712,11 @@
 % 用 \pkg{kvoptions} 的 key=value 方式来设置论文类型.
 %    \begin{macrocode}
 \newif\ifshu@master
+\newif\ifshu@profmaster
 \newif\ifshu@doctor
 \define@key{shu}{type}{%
   \shu@masterfalse
+  \shu@profmasterfalse
   \shu@doctorfalse
   \expandafter\csname shu@#1true\endcsname}
 \def\shu@deprecated@type@option{%
@@ -806,10 +808,12 @@
 % 用户至少要提供一个选项, 指定论文类型.
 %    \begin{macrocode}
   \ifshu@master\relax\else
-    \ifshu@doctor\relax\else
-        \ClassError{shuthesis}%
-                   {Please specify thesis type in option: \MessageBreak
-                    type=[master|doctor]}{}
+    \ifshu@profmaster\relax\else
+      \ifshu@doctor\relax\else
+          \ClassError{shuthesis}%
+                    {Please specify thesis type in option: \MessageBreak
+                      type=[master|profmaster|doctor]}{}
+      \fi
     \fi
   \fi
 %    \end{macrocode}
@@ -1753,8 +1757,8 @@
 \def\shu@secret@content{%
   \unskip~$\bigstar$ %
   \shu@secretyear~年}
-\def\shu@cdegree{\ifshu@doctor 博士\else 硕士\fi}
-\def\shu@edegree{\ifshu@doctor Doctor\else Master\fi}
+\def\shu@cdegree{\ifshu@doctor 博士\else \ifshu@master 硕士\else 专业硕士\fi\fi}
+\def\shu@edegree{\ifshu@doctor Doctor\else \ifshu@master Master\else Professional Master\fi\fi}
 \cdate{\CJK@todaybig}
 \edate{\ifcase \month \or January\or February\or March\or April\or May%
        \or June\or July \or August\or September\or October\or November
@@ -1763,11 +1767,12 @@
 %</cfg>
 %    \end{macrocode}
 %
-%
+% \changes{v2.1.3}{2023/09/26}{增加专业硕士}
 % \myentry{封面第一页}
 % \begin{macro}{\shu@first@page}
 %    \begin{macrocode}
 %<*cls>
+
 \def\shu@first@page{\renewcommand{\ULthickness}{1.8pt}%
  {\noindent\ifxetex\XBSong\else\bfseries\songti\fi%
  中图分类号：{\bfseries\shu@catalognumber}\hfill 单位代号：{\bfseries 10280\hphantom{000}}\\
@@ -1783,12 +1788,16 @@
    \raisebox{1ex}[0pt][0pt]{
    \includegraphics[height=3cm,width=9.8cm]{shu.pdf}}\hskip5mm
    \includegraphics[height=3.3cm,width=2.7cm]{shulogo.pdf}\fi\par\vskip5mm
-   \hskip3mm{\maxsize\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@cdegree 学位论文}
+   \centerline{\maxsize\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@cdegree 学位论文}
  \par\vskip-1mm
  \noindent\uline{\hskip\linewidth}\par\vskip1mm
  {\zihao{-1}\bfseries 
   \centerline{SHANGHAI~~UNIVERSITY}
-  \centerline{\MakeUppercase{\shu@edegree}'S~~DISSERTATION}}
+  \ifshu@profmaster
+  \centerline{\MakeUppercase{\shu@edegree}'S}
+  \centerline{DISSERTATION}
+  \else
+  \centerline{\MakeUppercase{\shu@edegree}'S~~DISSERTATION}\fi}
  \begin{center}
   {\setlength\arrayrulewidth{1pt}
   \begin{tabular}{|c|c|}

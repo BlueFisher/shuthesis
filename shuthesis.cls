@@ -27,19 +27,21 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{shuthesis}
-[2023/04/20 v2.1.2 Shanghai University Thesis Template]
+[2023/04/20 v2.1.3 Shanghai University Thesis Template]
 \hyphenation{Shu-Thesis}
 \def\shuthesis{\textsc{ShuThesis}}
-\def\version{2.1.2}
+\def\version{2.1.3}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=shu,
   prefix=shu@,
   setkeys=\kvsetkeys}
 \newif\ifshu@master
+\newif\ifshu@profmaster
 \newif\ifshu@doctor
 \define@key{shu}{type}{%
   \shu@masterfalse
+  \shu@profmasterfalse
   \shu@doctorfalse
   \expandafter\csname shu@#1true\endcsname}
 \def\shu@deprecated@type@option{%
@@ -68,10 +70,12 @@
 \newcommand{\HanYikai}{\CJKfamily{HanYikai}}
 \else\fi
   \ifshu@master\relax\else
-    \ifshu@doctor\relax\else
-        \ClassError{shuthesis}%
-                   {Please specify thesis type in option: \MessageBreak
-                    type=[master|doctor]}{}
+    \ifshu@profmaster\relax\else
+      \ifshu@doctor\relax\else
+          \ClassError{shuthesis}%
+                    {Please specify thesis type in option: \MessageBreak
+                      type=[master|profmaster|doctor]}{}
+      \fi
     \fi
   \fi
 \RequirePackage{etoolbox}
@@ -429,6 +433,7 @@
 \shu@parse@keywords{ckeywords}{shu@ckeywords@separator}
 \shu@parse@keywords{ekeywords}{shu@ekeywords@separator}
 \def\shusetup{\kvsetkeys{shu}}
+
 \def\shu@first@page{\renewcommand{\ULthickness}{1.8pt}%
  {\noindent\ifxetex\XBSong\else\bfseries\songti\fi%
  中图分类号：{\bfseries\shu@catalognumber}\hfill 单位代号：{\bfseries 10280\hphantom{000}}\\
@@ -444,12 +449,16 @@
    \raisebox{1ex}[0pt][0pt]{
    \includegraphics[height=3cm,width=9.8cm]{shu.pdf}}\hskip5mm
    \includegraphics[height=3.3cm,width=2.7cm]{shulogo.pdf}\fi\par\vskip5mm
-   \hskip3mm{\maxsize\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@cdegree 学位论文}
+   \centerline{\maxsize\ifxetex\LanTingHei\else\bfseries\heiti\fi\shu@cdegree 学位论文}
  \par\vskip-1mm
  \noindent\uline{\hskip\linewidth}\par\vskip1mm
  {\zihao{-1}\bfseries
   \centerline{SHANGHAI~~UNIVERSITY}
-  \centerline{\MakeUppercase{\shu@edegree}'S~~DISSERTATION}}
+  \ifshu@profmaster
+  \centerline{\MakeUppercase{\shu@edegree}'S}
+  \centerline{DISSERTATION}
+  \else
+  \centerline{\MakeUppercase{\shu@edegree}'S~~DISSERTATION}\fi}
  \begin{center}
   {\setlength\arrayrulewidth{1pt}
   \begin{tabular}{|c|c|}
