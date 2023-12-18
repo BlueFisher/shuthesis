@@ -27,10 +27,10 @@
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{shuthesis}
-[2023/04/20 v2.1.3 Shanghai University Thesis Template]
+[2023/12/18 v2.2.0 Shanghai University Thesis Template]
 \hyphenation{Shu-Thesis}
 \def\shuthesis{\textsc{ShuThesis}}
-\def\version{2.1.3}
+\def\version{2.2.0}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=shu,
@@ -131,6 +131,11 @@
 \RequirePackage{gbt7714}
 \patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} % lof
 \patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{} % lot
+\RequirePackage{bicaption}
+\DeclareBiCaptionSeparator{skip}{\vspace{-5bp}}
+\captionsetup{bi-separator=skip}
+\captionsetup[figure][bi-second]{name=Figure} % 设置图的英文编号前缀
+\captionsetup[table][bi-second]{name=Table} % 设置表的英文编号前缀
 \RequirePackage{hyperref}
 \ifxetex
   \hypersetup{%
@@ -197,13 +202,13 @@
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmattertrue}
 \renewcommand\normalsize{%
-  \@setfontsize\normalsize{12bp}{20bp}%
+  \xiaosi[2]%
   \abovedisplayskip=13bp \@plus 2bp \@minus 2bp
   \abovedisplayshortskip=13bp \@plus 2bp \@minus 2bp
   \belowdisplayskip=\abovedisplayskip
   \belowdisplayshortskip=\abovedisplayshortskip}
 \def\shu@def@fontsize#1#2{%
-  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+  \expandafter\newcommand\csname #1\endcsname[1][2]{%
     \fontsize{#2}{##1\dimexpr #2}\selectfont}}
 \shu@def@fontsize{maxsize}{57bp}
 \shu@def@fontsize{chuhao}{42bp}
@@ -368,7 +373,7 @@
 \def\@pnumwidth{2em}
 \def\@tocrmarg{\@pnumwidth}
 \def\@dotsep{1}
-\patchcmd{\@dottedtocline}{#4}{\csname shu@toc@font\endcsname #4}{}{}
+\patchcmd{\@dottedtocline}{#4}{\csname shu@toc@font\endcsname\heiti #4}{}{}
 \patchcmd{\@dottedtocline}{\hb@xt@\@pnumwidth}{\hbox}{}{}
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
@@ -611,18 +616,21 @@
   \endgroup}
 \newcommand{\shu@makeabstract}{%
   \shu@chapter*[]{\cabstractname}
+  \phantomsection\addcontentsline{toc}{chapter}{\cabstractname}
     \pagestyle{shu@headings}
     \pagenumbering{Roman}
   \shu@cabstract
   \vskip12bp
   \shu@put@keywords{\heiti\shu@ckeywords@title}{\shu@ckeywords}
   \shu@chapter*[]{\eabstractname}
+  \phantomsection\addcontentsline{toc}{chapter}{\eabstractname}
   \shu@eabstract
   \vskip12bp
   \shu@put@keywords{%
     \textbf{Keywords}:\enskip}{\shu@ekeywords}}
 \newenvironment{denotation}[1][2.5cm]{%
   \shu@chapter*[]{\shu@denotation@name} % no tocline
+  \phantomsection\addcontentsline{toc}{chapter}{\shu@denotation@name}
   \vskip-30bp\xiaosi[1.6]\begin{shu@denotation}[labelwidth=#1]
  }{%
   \end{shu@denotation}
@@ -655,7 +663,7 @@
 \let\l@table\l@figure
 \renewenvironment{thebibliography}[1]{%
    \shu@chapter*{\bibname}%
-   \wuhao[1.5]
+   \xiaosi[2]
    \list{\@biblabel{\@arabic\c@enumiv}}%
         {\renewcommand{\makelabel}[1]{##1\hfill}
          \settowidth\labelwidth{1.1cm}
@@ -681,10 +689,6 @@
   \shu@appendix}{%
   \let\title\@gobble}
 \newenvironment{publications}[1][\shu@publications@title]{%
- \shu@chapter*{#1}}{}
-\newcommand{\researchitem}[1]{%
- \vspace{32bp}{\sihao\heiti\centerline{#1}}\par\vspace{14bp}}
-\newenvironment{projects}[1][\shu@projects@title]{%
  \shu@chapter*{#1}}{}
 \AtEndOfClass{\input{shuthesis.cfg}}
 \AtEndOfClass{\sloppy}
