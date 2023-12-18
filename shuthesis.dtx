@@ -262,13 +262,16 @@
 % \label{sec:option}
 %
 % \DescribeOption{type}
-% 选择论文类型, 当前支持: \option{master}, \option{doctor}, 为必选项.
+% 选择论文类型, 当前支持: \option{master}, \option{profmaster}, \option{doctor}, 为必选项.
 % \begin{latex}
 % % 博士论文
 % \documentclass[type=doctor]{shuthesis}
 %
 % % 硕士论文
 % \documentclass[type=master]{shuthesis}
+%
+% % 专业硕士论文
+% \documentclass[type=profmaster]{shuthesis}
 % \end{latex}
 %
 % \DescribeOption{secret}
@@ -617,13 +620,7 @@
 % \end{appendix}
 % \end{latex}
 %
-% \subsubsection{作者在攻读学位期间发表的论文}
-%
-% \DescribeEnv{publications}
-% 用 \env{enumerate} 环境进行罗列发表的论文. 
-%
-% \DescribeEnv{projects}
-% 用 \env{enumerate} 环境进行罗列所做的项目. 
+% \subsubsection{攻读学位期间取得的研究成果}
 %
 % \subsection{自定义}
 % \label{sec:othercmd}
@@ -692,7 +689,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{shuthesis}
 %<cfg>\ProvidesFile{shuthesis.cfg}
-%<cls|cfg>[2023/04/20 v2.1.3 Shanghai University Thesis Template]
+%<cls|cfg>[2023/12/18 v2.2.0 Shanghai University Thesis Template]
 %    \end{macrocode}
 %
 % \subsection{定义选项}
@@ -701,7 +698,7 @@
 %<*cls>
 \hyphenation{Shu-Thesis}
 \def\shuthesis{\textsc{ShuThesis}}
-\def\version{2.1.3}
+\def\version{2.2.0}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=shu,
@@ -958,6 +955,16 @@
 \patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{} % lot
 %    \end{macrocode}
 %
+% \changes{v2.2.0}{2023/12/18}{使用中文英文混排的图、表多标题}
+% 使用中文英文混排的图、表多标题, 支持单图与多子图
+%    \begin{macrocode}
+\RequirePackage{bicaption}
+\DeclareBiCaptionSeparator{skip}{\vspace{-5bp}}
+\captionsetup{bi-separator=skip}
+\captionsetup[figure][bi-second]{name=Figure} % 设置图的英文编号前缀
+\captionsetup[table][bi-second]{name=Table} % 设置表的英文编号前缀
+%    \end{macrocode}
+%
 % 生成有书签的 pdf 及其开关, 请结合 gbk2uni 避免书签乱码.
 %    \begin{macrocode}
 \RequirePackage{hyperref}
@@ -1088,11 +1095,12 @@
 % \subsubsection{字体}
 % \label{sec:font}
 % \begin{macro}{\normalsize}
-% 正文小四号 (12bp) 字, 行距为固定值 20 bp. 设置文字与公式的垂直距离.
+% \changes{v2.2.0}{2023/12/18}{默认行距设置为固定值 24 bp}
+% 正文小四号 (12bp) 字, 行距为固定值 24 bp. 设置文字与公式的垂直距离.
 %    \begin{macrocode}
 %<*cls>
 \renewcommand\normalsize{%
-  \@setfontsize\normalsize{12bp}{20bp}%
+  \xiaosi[2]%
   \abovedisplayskip=13bp \@plus 2bp \@minus 2bp
   \abovedisplayshortskip=13bp \@plus 2bp \@minus 2bp
   \belowdisplayskip=\abovedisplayskip
@@ -1125,10 +1133,10 @@
 %
 % \begin{macro}{\shu@def@fontsize}
 % 根据习惯定义字号. 用法: \cs{shu@def@fontsize}\marg{字号名称}\marg{磅数}.
-% 所有字号定义时为单倍行距, 并提供选项指定行距倍数.
+% 所有字号定义时为 1.5 倍行距, 并提供选项指定行距倍数.
 %    \begin{macrocode}
 \def\shu@def@fontsize#1#2{%
-  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+  \expandafter\newcommand\csname #1\endcsname[1][2]{%
     \fontsize{#2}{##1\dimexpr #2}\selectfont}}
 %    \end{macrocode}
 % \end{macro}
@@ -1549,12 +1557,13 @@
 %    \end{macrocode}
 %
 % \begin{macro}{\tableofcontents}
+% \changes{v2.2.0}{2023/12/18}{目录使用全部黑体}
 % 调整目录样式.
 %    \begin{macrocode}
 \def\@pnumwidth{2em}
 \def\@tocrmarg{\@pnumwidth}
 \def\@dotsep{1}
-\patchcmd{\@dottedtocline}{#4}{\csname shu@toc@font\endcsname #4}{}{}
+\patchcmd{\@dottedtocline}{#4}{\csname shu@toc@font\endcsname\heiti #4}{}{}
 \patchcmd{\@dottedtocline}{\hb@xt@\@pnumwidth}{\hbox}{}{}
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
@@ -1839,7 +1848,7 @@
 %    \end{macrocode}
 %
 % \myentry{答辩委员签名}
-% \changes{v2.1.x}{2023/12/15}{修改封面格式}
+% \changes{v2.2.0}{2023/12/15}{修改封面格式}
 % \begin{macro}{\shu@committee}
 %    \begin{macrocode}
 %<*cls>
@@ -1869,7 +1878,7 @@
 % \end{macro}
 %
 % \myentry{原创性声明}
-% \changes{v2.1.x}{2023/12/15}{修改封面格式}
+% \changes{v2.2.0}{2023/12/15}{修改封面格式}
 % \begin{macro}{\shu@authordeclare}
 %    \begin{macrocode}
 %<*cls>
@@ -2034,6 +2043,7 @@
 %    \begin{macrocode}
 \newcommand{\shu@makeabstract}{%
   \shu@chapter*[]{\cabstractname}
+  \phantomsection\addcontentsline{toc}{chapter}{\cabstractname}
     \pagestyle{shu@headings}
     \pagenumbering{Roman}
 %    \end{macrocode}
@@ -2052,6 +2062,7 @@
 % 英文摘要部分的标题为 \textbf{Abstract}, 用 Arial 体小二号字. 
 %    \begin{macrocode}
   \shu@chapter*[]{\eabstractname}
+  \phantomsection\addcontentsline{toc}{chapter}{\eabstractname}
 %    \end{macrocode}
 %
 % 摘要内容用小四号 Times New Roman.
@@ -2073,12 +2084,13 @@
 % \label{sec:denotationfmt}
 % \begin{environment}{denotation}
 %
-% 主要符号对照表.
+% 主要符号表.
 %    \begin{macrocode}
-%<cfg>\newcommand{\shu@denotation@name}{主要符号对照表}
+%<cfg>\newcommand{\shu@denotation@name}{主要符号表}
 %<*cls>
 \newenvironment{denotation}[1][2.5cm]{%
   \shu@chapter*[]{\shu@denotation@name} % no tocline
+  \phantomsection\addcontentsline{toc}{chapter}{\shu@denotation@name}
   \vskip-30bp\xiaosi[1.6]\begin{shu@denotation}[labelwidth=#1]
  }{%
   \end{shu@denotation}
@@ -2146,13 +2158,14 @@
 % 参考文献的设置依赖于 \pkg{natbib} 宏包, 参考文献的正文部分用五号字.
 % 行距采用固定值 16 磅, 段前空 3 磅, 段后空 0 磅.
 %
+% \changes{v2.2.0}{2023/12/18}{参考文献使用小四}
 % \begin{environment}{thebibliography}
 % 修改默认的 thebibliography 环境, 增加一些调整代码.
 %    \begin{macrocode}
 %<*cls>
 \renewenvironment{thebibliography}[1]{%
    \shu@chapter*{\bibname}%
-   \wuhao[1.5]
+   \xiaosi[2]
    \list{\@biblabel{\@arabic\c@enumiv}}%
         {\renewcommand{\makelabel}[1]{##1\hfill}
          \settowidth\labelwidth{1.1cm}
@@ -2194,38 +2207,14 @@
 %
 % \subsection{科研成果}
 % \begin{environment}{publications}
-% 作者在攻读学位期间公开发表的论文和研究成果.
+% \changes{v2.2.0}{2023/12/18}{更改标题}
+% 攻读学位期间取得的研究成果.
 %    \begin{macrocode}
 %<*cfg>
-\newcommand{\shu@publications@title}{作者在攻读\shu@cdegree 学位期间发表的论文与研究成果}
+\newcommand{\shu@publications@title}{攻读\shu@cdegree 学位期间取得的研究成果}
 %</cfg>
 %<*cls>
 \newenvironment{publications}[1][\shu@publications@title]{%
- \shu@chapter*{#1}}{}
-%</cls>
-%    \end{macrocode}
-% \end{environment}
-%
-% \begin{macro}{\researchitem}
-% 研究成果用 \cs{researchitem}\marg{类别} 开启, 包括 ``学术论文" 和 ``研究成果" 两个列表.
-%    \begin{macrocode}
-%<*cls>
-\newcommand{\researchitem}[1]{%
- \vspace{32bp}{\sihao\heiti\centerline{#1}}\par\vspace{14bp}}
-%</cls>
-%    \end{macrocode}
-% \end{macro}
-%
-%
-% \subsection{项目}
-% \begin{environment}{projects}
-% 作者在攻读学位期间所作的项目.
-%    \begin{macrocode}
-%<*cfg>
-\newcommand{\shu@projects@title}{作者在攻读\shu@cdegree 学位期间所作的项目}
-%</cfg>
-%<*cls>
-\newenvironment{projects}[1][\shu@projects@title]{%
  \shu@chapter*{#1}}{}
 %</cls>
 %    \end{macrocode}

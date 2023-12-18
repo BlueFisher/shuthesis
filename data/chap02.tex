@@ -29,41 +29,42 @@
 \begin{figure}[!htbp]
   \centering
   \includegraphics[scale=0.3]{shu.pdf}
-  \caption{上海大学}
+  \bicaption{上海大学}{Shanghai University}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[scale=0.3]{shulogo.pdf}
-  \caption{上海大学 logo}
+  \includegraphics[scale=0.2]{shulogo.pdf}
+  \bicaption{上海大学 logo}{Shanghai University logo}
 \end{figure}
 
 
-
+\newpage
 \section{多子图}
-多子图可使用 \texttt{subcaption} 宏包.
+多子图可使用 \texttt{subcaption} 宏包, 并配合.
 
 \texttt{subcaptionbox} 命令:
 
 \begin{figure}[!htbp]
   \centering
-  \subcaptionbox{上海大学}{
+  \bisubcaptionbox{上海大学}{Shanghai University}{
     \includegraphics[scale=0.3]{shu.pdf}
   }
-  \subcaptionbox{上海大学logo}[.4\textwidth]{
+  \bisubcaptionbox{上海大学logo}{Shanghai University logo}[.4\textwidth]{
     \includegraphics[scale=0.3]{shulogo.pdf}
   }
-  \caption{多子图}
+  \bicaption{\texttt{subcaptionbox} 多子图}{subcaptionbox}
 \end{figure}
+
 
 \texttt{captionbox} 命令:
 
 \begin{figure}[!htbp]
   \centering
-  \captionbox{上海大学logo}[.4\textwidth]{
+  \bicaptionbox{上海大学logo}{Shanghai University logo}[.4\textwidth]{
     \includegraphics[scale=0.3]{shulogo.pdf}
   }
-  \captionbox{上海大学}{
+  \bicaptionbox{上海大学}{Shanghai University}{
     \includegraphics[scale=0.3]{shu.pdf}
   }
 \end{figure}
