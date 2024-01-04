@@ -398,6 +398,8 @@
   \expandafter\gdef\csname #1\endcsname##1{%
     \expandafter\gdef\csname shu@#1\endcsname{##1}}
   \csname #1\endcsname{}}
+\shu@def@term{cdegree}
+\shu@def@term{edegree}
 \shu@def@term{secretlevel}
 \shu@def@term{secretyear}
 \shu@def@term{id}
