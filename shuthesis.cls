@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2017-2023 by Zhenyu Zhang <zhenyuzhang@shu.edu.cn>
+%% Copyright (C) 2017-2024 by Zhenyu Zhang <zhenyuzhang@shu.edu.cn>
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 2.0
@@ -316,8 +316,8 @@
     pagestyle={shu@headings},
     beforeskip={9bp},
     aftername=\hskip\ccwd,
-    afterskip={24bp},
-    format={\centering\shu@title@font\heiti\xiaoer[1]},
+    afterskip={20bp},
+    format={\centering\shu@title@font\heiti\xiaoer[1.2]},
     nameformat=\relax,
     number=\chinese{chapter},
     numberformat=\relax,
