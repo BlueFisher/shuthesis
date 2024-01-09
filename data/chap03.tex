@@ -87,3 +87,29 @@
 \begin{problem}
 回答还是不回答, 是个问题. 
 \end{problem}
+
+\begin{algorithm}[!htbp]
+  \caption{基于特征共享强化学习的SAC算法}
+  \label{algo:algo1}
+  \DontPrintSemicolon
+  \SetKwFor{Forever}{loop}{forever}{end}
+  \SetKw{In}{in}
+  \SetKwInOut{Input}{输入}
+  \SetKwInOut{Output}{输出}
+  \SetKwFunction{EnvReset}{Env.reset}
+  \SetKwFunction{EnvStep}{Env.step}
+  \vspace{5pt}
+
+  \Input{策略参数$\phi$, 经验池$\mathcal{D}$}
+  \Output{$\phi$}
+  \BlankLine
+
+  $o_t \leftarrow \EnvReset()$\;
+  \Forever(\tcp*[f]{迭代}){iteration}{
+    \While(\tcp*[f]{环境交互与训练时间步}){$t<T$}{
+      $a_t\sim \pi_\phi(a_t|o_t)$ \tcp*[r]{从策略中生成动作}
+      $(r_t,o_{t+1}) \leftarrow \EnvStep(o_t,a_t)$ \tcp*[r]{与环境交互}
+      $\mathcal{D} \leftarrow \mathcal{D} \cup \{(o_t,a_t,r_t,o_{t+1})\}$ \tcp*[r]{填充经验池}
+    }
+  }
+\end{algorithm}

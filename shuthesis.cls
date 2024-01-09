@@ -299,6 +299,7 @@
 \renewcommand{\thesubtable}{(\alph{subtable})}
 \let\shu@LT@array\LT@array
 \def\LT@array{\dawu[1.5]\shu@LT@array} % set default font size
+\RequirePackage[ruled,linesnumbered]{algorithm2e}
 \def\shu@title@font{%
   \ifshu@arialtitle\sffamily\else\relax\fi}
 \AtBeginDocument{%
