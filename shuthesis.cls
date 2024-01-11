@@ -616,22 +616,19 @@
     \box\shu@kw#2\par
   \endgroup}
 \newcommand{\shu@makeabstract}{%
-  \shu@chapter*[]{\cabstractname}
-  \phantomsection\addcontentsline{toc}{chapter}{\cabstractname}
+  \shu@chapter*{\cabstractname}
     \pagestyle{shu@headings}
     \pagenumbering{Roman}
   \shu@cabstract
   \vskip12bp
   \shu@put@keywords{\heiti\shu@ckeywords@title}{\shu@ckeywords}
-  \shu@chapter*[]{\eabstractname}
-  \phantomsection\addcontentsline{toc}{chapter}{\eabstractname}
+  \shu@chapter*{\eabstractname}
   \shu@eabstract
   \vskip12bp
   \shu@put@keywords{%
     \textbf{Keywords}:\enskip}{\shu@ekeywords}}
 \newenvironment{denotation}[1][2.5cm]{%
-  \shu@chapter*[]{\shu@denotation@name} % no tocline
-  \phantomsection\addcontentsline{toc}{chapter}{\shu@denotation@name}
+  \shu@chapter*{\shu@denotation@name}
   \vskip-30bp\xiaosi[1.6]\begin{shu@denotation}[labelwidth=#1]
  }{%
   \end{shu@denotation}

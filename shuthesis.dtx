@@ -2056,8 +2056,7 @@
 % 中文摘要部分的标题为\textbf{摘要}, 用黑体小二号字.
 %    \begin{macrocode}
 \newcommand{\shu@makeabstract}{%
-  \shu@chapter*[]{\cabstractname}
-  \phantomsection\addcontentsline{toc}{chapter}{\cabstractname}
+  \shu@chapter*{\cabstractname}
     \pagestyle{shu@headings}
     \pagenumbering{Roman}
 %    \end{macrocode}
@@ -2075,8 +2074,7 @@
 %
 % 英文摘要部分的标题为 \textbf{Abstract}, 用 Arial 体小二号字. 
 %    \begin{macrocode}
-  \shu@chapter*[]{\eabstractname}
-  \phantomsection\addcontentsline{toc}{chapter}{\eabstractname}
+  \shu@chapter*{\eabstractname}
 %    \end{macrocode}
 %
 % 摘要内容用小四号 Times New Roman.
@@ -2103,8 +2101,7 @@
 %<cfg>\newcommand{\shu@denotation@name}{主要符号表}
 %<*cls>
 \newenvironment{denotation}[1][2.5cm]{%
-  \shu@chapter*[]{\shu@denotation@name} % no tocline
-  \phantomsection\addcontentsline{toc}{chapter}{\shu@denotation@name}
+  \shu@chapter*{\shu@denotation@name}
   \vskip-30bp\xiaosi[1.6]\begin{shu@denotation}[labelwidth=#1]
  }{%
   \end{shu@denotation}
