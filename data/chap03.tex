@@ -88,8 +88,13 @@
 回答还是不回答, 是个问题. 
 \end{problem}
 
+\newpage
+\section{算法伪代码环境}
+
+使用 \texttt{algorithm2e} 宏包, 看看这个例子算法~\ref{algo:algo1}.
+
 \begin{algorithm}[!htbp]
-  \caption{基于特征共享强化学习的SAC算法}
+  \caption{强化学习算法}
   \label{algo:algo1}
   \DontPrintSemicolon
   \SetKwFor{Forever}{loop}{forever}{end}
@@ -100,7 +105,7 @@
   \SetKwFunction{EnvStep}{Env.step}
   \vspace{5pt}
 
-  \Input{策略参数$\phi$, 经验池$\mathcal{D}$}
+  \Input{策略参数$\phi$,\ 经验池$\mathcal{D}$}
   \Output{$\phi$}
   \BlankLine
 
