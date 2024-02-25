@@ -19,7 +19,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{shuthesis.dtx}[2022/03/13 2.1.3 Shanghai University Thesis Template]
+\ProvidesFile{shuthesis.dtx}[2023/12/18 2.2.0 Shanghai University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -1095,12 +1095,12 @@
 % \subsubsection{字体}
 % \label{sec:font}
 % \begin{macro}{\normalsize}
-% \changes{v2.2.0}{2023/12/18}{默认行距设置为固定值 24 bp}
-% 正文小四号 (12bp) 字, 行距为固定值 24 bp. 设置文字与公式的垂直距离.
+% \changes{v2.2.1}{2024/02/25}{默认行距设置为固定值 23 bp}
+% 正文小四号 (12bp) 字, 行距为固定值 23 bp. 设置文字与公式的垂直距离.
 %    \begin{macrocode}
 %<*cls>
 \renewcommand\normalsize{%
-  \xiaosi[2]%
+  \@setfontsize\normalsize{12bp}{23bp}%
   \abovedisplayskip=13bp \@plus 2bp \@minus 2bp
   \abovedisplayshortskip=13bp \@plus 2bp \@minus 2bp
   \belowdisplayskip=\abovedisplayskip
@@ -1577,7 +1577,7 @@
 \def\@pnumwidth{2em}
 \def\@tocrmarg{\@pnumwidth}
 \def\@dotsep{1}
-\patchcmd{\@dottedtocline}{#4}{\csname shu@toc@font\endcsname\heiti #4}{}{}
+\patchcmd{\@dottedtocline}{#4}{\csname shu@toc@font\endcsname #4}{}{}
 \patchcmd{\@dottedtocline}{\hb@xt@\@pnumwidth}{\hbox}{}{}
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
@@ -2102,7 +2102,7 @@
 %<*cls>
 \newenvironment{denotation}[1][2.5cm]{%
   \shu@chapter*{\shu@denotation@name}
-  \vskip-30bp\xiaosi[1.6]\begin{shu@denotation}[labelwidth=#1]
+  \vskip-30bp\begin{shu@denotation}[labelwidth=#1]
  }{%
   \end{shu@denotation}
  }

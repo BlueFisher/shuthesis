@@ -202,7 +202,7 @@
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmattertrue}
 \renewcommand\normalsize{%
-  \xiaosi[2]%
+  \@setfontsize\normalsize{12bp}{23bp}%
   \abovedisplayskip=13bp \@plus 2bp \@minus 2bp
   \abovedisplayshortskip=13bp \@plus 2bp \@minus 2bp
   \belowdisplayskip=\abovedisplayskip
@@ -374,7 +374,7 @@
 \def\@pnumwidth{2em}
 \def\@tocrmarg{\@pnumwidth}
 \def\@dotsep{1}
-\patchcmd{\@dottedtocline}{#4}{\csname shu@toc@font\endcsname\heiti #4}{}{}
+\patchcmd{\@dottedtocline}{#4}{\csname shu@toc@font\endcsname #4}{}{}
 \patchcmd{\@dottedtocline}{\hb@xt@\@pnumwidth}{\hbox}{}{}
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
@@ -629,7 +629,7 @@
     \textbf{Keywords}:\enskip}{\shu@ekeywords}}
 \newenvironment{denotation}[1][2.5cm]{%
   \shu@chapter*{\shu@denotation@name}
-  \vskip-30bp\xiaosi[1.6]\begin{shu@denotation}[labelwidth=#1]
+  \vskip-30bp\begin{shu@denotation}[labelwidth=#1]
  }{%
   \end{shu@denotation}
  }
