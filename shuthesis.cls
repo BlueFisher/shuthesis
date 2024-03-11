@@ -132,8 +132,6 @@
 \patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} % lof
 \patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{} % lot
 \RequirePackage[list=off]{bicaption}
-\DeclareBiCaptionSeparator{skip}{\vspace{-5bp}}
-\captionsetup{bi-separator=skip}
 \captionsetup[figure][bi-second]{name=Figure} % 设置图的英文编号前缀
 \captionsetup[table][bi-second]{name=Table} % 设置表的英文编号前缀
 \RequirePackage{hyperref}
