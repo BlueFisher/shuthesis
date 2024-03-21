@@ -459,10 +459,15 @@
  {\zihao{-1}\bfseries
   \centerline{SHANGHAI~~UNIVERSITY}
   \ifshu@profmaster
-  \centerline{\MakeUppercase{\shu@edegree}'S}
-  \centerline{DISSERTATION}
+    \centerline{PROFESSIONAL~~MASTER'S}
+    \centerline{DISSERTATION}
   \else
-  \centerline{\MakeUppercase{\shu@edegree}'S~~DISSERTATION}\fi}
+    \ifshu@doctor
+    \centerline{DOCTORAL~~DISSERTATION}
+    \else
+      \centerline{\MakeUppercase{\shu@edegree}'S~~DISSERTATION}
+    \fi
+  \fi}
  \begin{center}
   {\setlength\arrayrulewidth{1pt}
   \begin{tabular}{|c|c|}
@@ -570,7 +575,9 @@
  \vspace*{.5cm}
  \begin{center}
  \sanhao[1.6] A Dissertation Submitted to Shanghai University
- for the \\ Degree of \shu@edegree~in \shu@edisciplines\par
+ for the Degree \\ of
+ \ifshu@doctor Doctor of Philosophy \else Master \fi
+ in \shu@edisciplines\par
  \vskip3cm
  \begin{center}\zihao{1}{\bfseries{\shu@etitle}}\end{center}
  \vskip3cm
