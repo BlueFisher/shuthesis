@@ -416,6 +416,7 @@
 \shu@def@term{cdate}
 \shu@def@term{edate}
 \shu@def@term{coverdate}
+\shu@def@term{showabstract}
 \newcommand{\shu@@cabstract}[1]{\long\gdef\shu@cabstract{#1}}
 \newenvironment{cabstract}{\Collect@Body\shu@@cabstract}{}
 \newcommand{\shu@@eabstract}[1]{\long\gdef\shu@eabstract{#1}}
@@ -621,13 +622,13 @@
     \box\shu@kw#2\par
   \endgroup}
 \newcommand{\shu@makeabstract}{%
-  \shu@chapter*{\cabstractname}
+  \ifthenelse{\equal{\shu@showabstract}{false}}{}{\shu@chapter*{\cabstractname}}
     \pagestyle{shu@headings}
     \pagenumbering{Roman}
   \shu@cabstract
   \vskip12bp
   \shu@put@keywords{\heiti\shu@ckeywords@title}{\shu@ckeywords}
-  \shu@chapter*{\eabstractname}
+  \ifthenelse{\equal{\shu@showabstract}{false}}{}{\shu@chapter*{\eabstractname}}
   \shu@eabstract
   \vskip12bp
   \shu@put@keywords{%
