@@ -1704,6 +1704,10 @@
 \shu@def@term{edate}
 \shu@def@term{coverdate}
 %    \end{macrocode}
+% 是否在目录显示摘要.
+%    \begin{macrocode}
+\shu@def@term{showabstract}
+%    \end{macrocode}
 % \end{macro}
 % \end{macro}
 % \end{macro}
@@ -2061,7 +2065,7 @@
 % 中文摘要部分的标题为\textbf{摘要}, 用黑体小二号字.
 %    \begin{macrocode}
 \newcommand{\shu@makeabstract}{%
-  \shu@chapter*{\cabstractname}
+  \ifthenelse{\equal{\shu@showabstract}{false}}{}{\shu@chapter*{\cabstractname}}
     \pagestyle{shu@headings}
     \pagenumbering{Roman}
 %    \end{macrocode}
@@ -2079,7 +2083,7 @@
 %
 % 英文摘要部分的标题为 \textbf{Abstract}, 用 Arial 体小二号字. 
 %    \begin{macrocode}
-  \shu@chapter*{\eabstractname}
+  \ifthenelse{\equal{\shu@showabstract}{false}}{}{\shu@chapter*{\eabstractname}}
 %    \end{macrocode}
 %
 % 摘要内容用小四号 Times New Roman.
