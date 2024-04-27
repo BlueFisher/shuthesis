@@ -356,7 +356,13 @@
       \addcontentsline{toc}{chapter}{#3}
     }
   }{%
-    \addcontentsline{toc}{chapter}{#3}
+    \ifthenelse{\equal{\shu@showabstract}{false}}{%
+      \ifthenelse{\equal{#3}{\cabstractname} \or \equal{#3}{\eabstractname}}{}{%
+        \addcontentsline{toc}{chapter}{#3}
+      }
+    }{%
+      \addcontentsline{toc}{chapter}{#3}
+    }
   }%
   \chapter*{#3}%
   \IfValueTF{#4}{%
@@ -622,13 +628,13 @@
     \box\shu@kw#2\par
   \endgroup}
 \newcommand{\shu@makeabstract}{%
-  \ifthenelse{\equal{\shu@showabstract}{false}}{}{\shu@chapter*{\cabstractname}}
+  \shu@chapter*{\cabstractname}
     \pagestyle{shu@headings}
     \pagenumbering{Roman}
   \shu@cabstract
   \vskip12bp
   \shu@put@keywords{\heiti\shu@ckeywords@title}{\shu@ckeywords}
-  \ifthenelse{\equal{\shu@showabstract}{false}}{}{\shu@chapter*{\eabstractname}}
+  \shu@chapter*{\eabstractname}
   \shu@eabstract
   \vskip12bp
   \shu@put@keywords{%
