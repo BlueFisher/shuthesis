@@ -1542,7 +1542,13 @@
       \addcontentsline{toc}{chapter}{#3}
     }
   }{%
-    \addcontentsline{toc}{chapter}{#3}
+    \ifthenelse{\equal{\shu@showabstract}{false}}{%
+      \ifthenelse{\equal{#3}{\cabstractname} \or \equal{#3}{\eabstractname}}{}{%
+        \addcontentsline{toc}{chapter}{#3}
+      }
+    }{%
+      \addcontentsline{toc}{chapter}{#3}
+    }
   }%
   \chapter*{#3}%
   \IfValueTF{#4}{%
@@ -2065,7 +2071,7 @@
 % 中文摘要部分的标题为\textbf{摘要}, 用黑体小二号字.
 %    \begin{macrocode}
 \newcommand{\shu@makeabstract}{%
-  \ifthenelse{\equal{\shu@showabstract}{false}}{}{\shu@chapter*{\cabstractname}}
+  \shu@chapter*{\cabstractname}
     \pagestyle{shu@headings}
     \pagenumbering{Roman}
 %    \end{macrocode}
@@ -2083,7 +2089,7 @@
 %
 % 英文摘要部分的标题为 \textbf{Abstract}, 用 Arial 体小二号字. 
 %    \begin{macrocode}
-  \ifthenelse{\equal{\shu@showabstract}{false}}{}{\shu@chapter*{\eabstractname}}
+  \shu@chapter*{\eabstractname}
 %    \end{macrocode}
 %
 % 摘要内容用小四号 Times New Roman.
