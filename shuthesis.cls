@@ -128,7 +128,7 @@
 \RequirePackage{booktabs}
 \RequirePackage{ulem}
 \RequirePackage[numbers,sort&compress,square,super]{natbib}
-\RequirePackage{gbt7714}
+\RequirePackage[url=false,doi=false]{gbt7714}
 \patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} % lof
 \patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{} % lot
 \RequirePackage[list=off]{bicaption}
